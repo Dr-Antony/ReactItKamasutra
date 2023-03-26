@@ -1,0 +1,75 @@
+.content_profile {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+    background-color: #031d4e;
+    border-radius: 1em;
+    align-items: center;
+}
+
+.profile__image {
+    display: grid;
+    width: 90%;
+    height: 90%;
+    background-image: linear-gradient(to left top, #181617, #21111c, #260a24, #27042f, #23003c, #280148, #2d0255, #310362, #4c066e, #670b78, #811382, #9b1b8b);
+    border-radius: 1em;
+    justify-items: center;
+    align-items: center;
+}
+
+
+.profile__user {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    width: 90%;
+    height: 90%;
+    background: rgb(118, 131, 156);
+    border-radius: 1em;
+    /* background-color: #031d4e; */
+    justify-items: center;
+    align-items: center;
+}
+
+.user__photo {
+    width: 90%;
+    height: 90%;
+    background-image: linear-gradient(to right top, #4f203b, #481c22, #391d11, #281d07, #191a08, #142013, #0b271e, #002c2c, #003f5e, #004fa7, #0050e6, #7500f6);
+    border-radius: 1em;
+}
+
+.user__info {
+    width: 90%;
+    height: 90%;
+    background: #000b18;
+    border-radius: 1em;
+}
+
+.user__info-items {
+    display: grid;
+    justify-items: center;
+    background: #000b18;
+    border-radius: 1em;
+}
+
+.user__info-item {
+    color: white;
+    font-weight: 700;
+    background: #000b18;
+}
+
+.profile__post {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    width: 90%;
+    height: 90%;
+    background: rgb(118, 131, 156);
+    border-radius: 1em;
+}
+
+.profile__post-item {
+    width: 90%;
+    height: 90%;
+    border-radius: 1em;
+    background-image: linear-gradient(to right top, #004478, #003d7a, #0f357a, #202b78, #2f1f74, #471568, #550a5b, #5e004e, #65003b, #670029, #640017, #5e0000);
+}
