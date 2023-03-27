@@ -1,7 +1,7 @@
 import React from 'react';
 import './body.css'
 import Nav from './body-components/nav';
-import Profile from './body-components/body-content/profile';
+import Profile from './body-components/body-content/Profile/profile';
 const Body = () => {
     return (
         <div className='body'>

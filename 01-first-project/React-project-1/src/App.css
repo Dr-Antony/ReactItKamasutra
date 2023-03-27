@@ -1,12 +1,13 @@
-* {
+/* * {
   background-color: rgb(189, 228, 238);
-}
+} */
 
 .wrapper {
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr;
   /* grid-template-rows: 1fr; */
+  background-color: rgb(189, 228, 238);
 }
 
 .container {}
