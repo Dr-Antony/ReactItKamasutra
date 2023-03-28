@@ -4,15 +4,18 @@ import './reset.css'
 import Header from './components/header/header';
 import Body from './components/body/body';
 import Footer from './components/footer/footer';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 const App = () => {
   return (
-    <div className='wrapper'>
-      <div className='container'>
-        <Header />
-        <Body />
-        <Footer />
+    <BrowserRouter>
+      <div className='wrapper'>
+        <div className='container'>
+          <Header />
+          <Body />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 };
 

@@ -12,7 +12,6 @@ const Posts = () => {
             </div>
             <div className={p.posts}>
                 <Post message = "Hello it my first pussy"/>
-                <Post message = "Okey, fine"/>
             </div>
         </div>
     );
