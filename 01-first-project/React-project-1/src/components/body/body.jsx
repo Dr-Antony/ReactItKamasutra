@@ -7,6 +7,8 @@ import Messages from './body-components/body-content/Messages/Messages';
 import Music from './body-components/body-content/Music/Music';
 import News from './body-components/body-content/News/News';
 import Settings from './body-components/body-content/Settings/Settings';
+
+
 const Body = () => {
     return (
         <div className='body'>
