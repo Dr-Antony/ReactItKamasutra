@@ -12,7 +12,7 @@ const App = () => {
         <div className='container'>
           <Header />
           <Body />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </BrowserRouter>

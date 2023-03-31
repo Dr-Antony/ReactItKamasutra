@@ -6,7 +6,7 @@ const Post = (props) => {
         <div className={s.item}>
             <img src="https://pbs.twimg.com/media/FPsXAFAVcAIJWf4?format=jpg&name=900x900"/>
             {props.message}
-            <div><span>like</span></div>
+            <div>{props.likeCount + ' '}<span>like</span></div>
         </div>
     );
 };

@@ -3,6 +3,10 @@ import p from './posts.module.css'
 import Post from './post/post';
 
 const Posts = () => {
+    let postsData = [
+        { id: 1, message: 'Hello it my first pussy', likeCount: 5 },
+        { id: 2, message: 'I liked your ass', likeCount: 112  }
+    ];
     return (
         <div>
             <div>
@@ -11,7 +15,9 @@ const Posts = () => {
                 <button>Remove Post</button>
             </div>
             <div className={p.posts}>
-                <Post message = "Hello it my first pussy"/>
+                <Post message = {postsData[0].message} likeCount = {postsData[0].likeCount} />
+                <Post message = {postsData[1].message} likeCount = {postsData[1].likeCount} />
+
             </div>
         </div>
     );
