@@ -7,6 +7,9 @@ const Posts = () => {
         { id: 1, message: 'Hello it my first pussy', likeCount: 5 },
         { id: 2, message: 'I liked your ass', likeCount: 112  }
     ];
+    let postsArray = postsData.map((p)=>{
+        return (<Post message = {p.message} likeCount = {p.likeCount} /> )
+    })
     return (
         <div>
             <div>
@@ -15,9 +18,7 @@ const Posts = () => {
                 <button>Remove Post</button>
             </div>
             <div className={p.posts}>
-                <Post message = {postsData[0].message} likeCount = {postsData[0].likeCount} />
-                <Post message = {postsData[1].message} likeCount = {postsData[1].likeCount} />
-
+                {postsArray}
             </div>
         </div>
     );
