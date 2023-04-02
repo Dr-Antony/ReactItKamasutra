@@ -9,14 +9,14 @@ import News from './body-components/body-content/News/News';
 import Settings from './body-components/body-content/Settings/Settings';
 
 
-const Body = () => {
+const Body = (props) => {
     return (
         <div className='body'>
             <Nav />
             <div className='content'>
                 <Routes>
-                    <Route path="/Messages" element={<Messages />} />
-                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/Messages" element={<Messages dialogsData={props.dialogsData} messagesData={props.messagesData} />} />
+                    <Route path="/profile" element={<Profile postsData={props.postsData} />} />
                     <Route path="/Music" element={<Music />} />
                     <Route path="/News" element={<News />} />
                     <Route path="/Settings" element={<Settings />} />
