@@ -15,7 +15,32 @@
 
 
 .dialog__window {
+    display: grid;
     background: rgb(118, 131, 156);
     border-radius: 1em;
     margin: 1em;
+    padding: 1em;
+
+}
+
+.dialog__window_msgs{
+overflow: scroll;
+}
+.dialog__window_send{
+display: grid;
+grid-template-columns: 4fr 1fr;
+}
+.textArea{
+    margin-left: 1em;
+    width: 90%;
+}
+.button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }

@@ -7,14 +7,19 @@ import MessageItem from './MessageItem/MessageItem';
 
 
 const Messages = (props) => {
-let dialogsElements = props.dialogsData.map((d)=>{
-    return ( <DialogItem name={d.name} id={d.id} />)
-});
-    let mesagesElements = props.messagesData.map((m)=>{
-        return ( <MessageItem message={m.message} />)
+    let dialogsElements = props.dialogsData.map((d) => {
+        return (<DialogItem name={d.name} id={d.id} />)
+    });
+    let mesagesElements = props.messagesData.map((m) => {
+        return (<MessageItem message={m.message} />)
     });
 
 
+    let newMessage = React.createRef();
+    let sendMessage = () => {
+        let text = newMessage.current.value;
+        props.messagesData.push({ id: props.messagesData.length += 1 , message: text })
+    };
 
 
     return (
@@ -23,7 +28,13 @@ let dialogsElements = props.dialogsData.map((d)=>{
                 {dialogsElements}
             </div>
             <div className={style.dialog__window}>
-                {mesagesElements}
+                <div className={style.dialog__window_msgs}>
+                    {mesagesElements}
+                </div>
+                <div className={style.dialog__window_send}>
+                    <div><textarea className={style.textArea} ref={newMessage}></textarea></div>
+                    <div><button onClick={sendMessage} className={style.button}>Send</button></div>
+                </div>
             </div>
         </div>
     );

@@ -1,3 +1,9 @@
 .message {
     font-weight: 400;
+    padding: 1em;
+    color:black;
+    /* display: block; */
+    background: red;
+    border-radius: 2em;
+    margin-bottom: 1em;
 }
