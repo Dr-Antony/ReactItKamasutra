@@ -18,7 +18,7 @@ const App = (props) => {
       <div className='wrapper'>
         <div className='container'>
           <Header />
-          <Body state={props.state} />
+          <Body state={props.state} addPost={props.addPost} addMessage={props.addMessage} />
           <Footer />
         </div>
       </div>

@@ -16,9 +16,11 @@ const Messages = (props) => {
 
 
     let newMessage = React.createRef();
+
+
     let sendMessage = () => {
         let text = newMessage.current.value;
-        props.messagesData.push({ id: props.messagesData.length += 1 , message: text })
+        props.addMessage(text);
     };
 
 

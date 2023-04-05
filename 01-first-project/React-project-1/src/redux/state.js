@@ -1,3 +1,4 @@
+import { reRender } from "../render";
 let state = {
     messagesPage: {
         dialogsData: [
@@ -19,6 +20,18 @@ let state = {
             { id: 1, message: 'I liked your ass', likeCount: 112 }
         ]
     }
+};
+
+
+export let addPost = (textOfNewPost) => {
+    let newPost = {id: state.profilePage.postsData.length += 1, message: textOfNewPost, likeCount: 0 };
+    state.profilePage.postsData.push(newPost);
+    reRender(state);
+};
+export let addMessage = (textOfNewMessage) => {
+    let newMessage = { id: state.messagesPage.messagesData.length += 1, message: textOfNewMessage };
+    state.messagesPage.messagesData.push(newMessage);
+    reRender(state);
 };
 
 export default state;
