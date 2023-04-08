@@ -6,14 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import state from './redux/state';
 import { addPost } from './redux/state';
 import { addMessage } from './redux/state';
-
+import { updateTextPost } from './redux/state';
 
 
 export let reRender = (state) => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
         <React.StrictMode>
-            <App state={state} addPost={addPost} addMessage={addMessage} />
+            <App state={state} updateTextPost={updateTextPost} addPost={addPost} addMessage={addMessage} />
         </React.StrictMode>
     );
 };

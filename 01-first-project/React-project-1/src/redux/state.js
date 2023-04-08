@@ -18,7 +18,8 @@ let state = {
         postsData: [
             { id: 0, message: 'Hello it my first pussy', likeCount: 5 },
             { id: 1, message: 'I liked your ass', likeCount: 112 }
-        ]
+        ],
+        newText: ''
     }
 };
 
@@ -26,6 +27,10 @@ let state = {
 export let addPost = (textOfNewPost) => {
     let newPost = {id: state.profilePage.postsData.length += 1, message: textOfNewPost, likeCount: 0 };
     state.profilePage.postsData.push(newPost);
+    reRender(state);
+};
+export let updateTextPost = (updateText) => {
+    state.profilePage.newText= updateText;
     reRender(state);
 };
 export let addMessage = (textOfNewMessage) => {
