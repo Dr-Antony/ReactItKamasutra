@@ -3,10 +3,9 @@ import { NavLink } from 'react-router-dom';
 import style from './DialogItem.module.css';
 
 const DialogItem = (props) => {
-    // let path = "/message/" + props.id;
-    let path = "/" + props.name;
+    let path = "/Message/" + props.name;
     return (
-        <div className={style.item + ' ' + style.active}>
+        <div className={style.item}>
             <NavLink to={path}>{props.name}</NavLink>
         </div>
     );
