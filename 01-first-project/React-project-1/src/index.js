@@ -6,9 +6,19 @@ import reportWebVitals from './reportWebVitals';
 import state from './redux/state';
 import { addPost } from './redux/state';
 import { addMessage } from './redux/state';
-import { reRender } from './render';
+import { updateTextPost } from './redux/state';
+import { subscribe } from './redux/state';
 
 
-reRender(state);
+export let Render = (state) => {
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
+        <React.StrictMode>
+            <App state={state} updateTextPost={updateTextPost} addPost={addPost} addMessage={addMessage} />
+        </React.StrictMode>
+    );
+};
 
-// reportWebVitals();
+Render(state);
+
+subscribe(Render);

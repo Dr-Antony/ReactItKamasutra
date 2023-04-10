@@ -1,4 +1,5 @@
-import { reRender } from "../render";
+// import { reRender } from "../render";
+let reRender = () => {};
 let state = {
     messagesPage: {
         dialogsData: [
@@ -54,9 +55,16 @@ export let updateTextPost = (updateText) => {
     reRender(state);
 };
 export let addMessage = (textOfNewMessage) => {
-    let newMessage = { id: state.messagesPage.messagesData.length += 1, message: textOfNewMessage };
+    let newMessage = { id: state.messagesPage.dialogsData.length += 1, message: textOfNewMessage };
     state.messagesPage.messagesData.push(newMessage);
     reRender(state);
 };
+
+export const subscribe = (observe) => {
+    reRender = observe;
+};
+
+
+
 
 export default state;
