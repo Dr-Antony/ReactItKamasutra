@@ -13,58 +13,15 @@ const Messages = (props) => {
     });
 
 
-
-
-
-    // let dialogWindowRendersArray = props.dialogsData.map((r) => {
-    //     let path = '/Messages/' + r.name;
-    //     return (<Route path={path} element={<Dialogs messagesData={r.messagesData} addMessage={props.addMessage} />} />)
-    // });
-
-
-
-
-
-
-
-
-
-    // let routeMesseges = props.dialogsData.map((r)=>{
-    //     let pathItem = r.name;
-    //     let mesages = r.messagesData.map((m) => {
-    //         return (<MessageItem message={m.message} />)
-    //     });
-    //     return(
-    //         <Route path={pathItem} element={mesages} />
-    //     );
-    // });
-
-    // let mesagesElements = props.dialogsData.messagesData.map((m) => {
-    //     return (<MessageItem message={m.message} />)
-    // });
-
     let mesagesElements = props.messagesData.map((m) => {
         return (<MessageItem message={m.message} />)
     });
-
-
-
-
-
-
 
     let newMessage = React.createRef();
     let sendMessage = () => {
         let text = newMessage.current.value;
         props.addMessage(text);
     };
-
-
-
-
-
-
-
 
 
     return (
@@ -86,3 +43,43 @@ const Messages = (props) => {
 };
 
 export default Messages;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // let dialogWindowRendersArray = props.dialogsData.map((r) => {
+    //     let path = '/Messages/' + r.name;
+    //     return (<Route path={path} element={<Dialogs messagesData={r.messagesData} addMessage={props.addMessage} />} />)
+    // });
+
+
+
+    // let routeMesseges = props.dialogsData.map((r)=>{
+    //     let pathItem = r.name;
+    //     let mesages = r.messagesData.map((m) => {
+    //         return (<MessageItem message={m.message} />)
+    //     });
+    //     return(
+    //         <Route path={pathItem} element={mesages} />
+    //     );
+    // });
+
+    // let mesagesElements = props.dialogsData.messagesData.map((m) => {
+    //     return (<MessageItem message={m.message} />)
+    // });
