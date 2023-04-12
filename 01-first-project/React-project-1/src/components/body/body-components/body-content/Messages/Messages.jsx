@@ -18,9 +18,11 @@ const Messages = (props) => {
     });
 
     let newMessage = React.createRef();
+
+
     let sendMessage = () => {
         let text = newMessage.current.value;
-        props.addMessage(text);
+        props.dispatch({type: 'ADD-MESSAGE',textOfNewMessage: text });
     };
 
 

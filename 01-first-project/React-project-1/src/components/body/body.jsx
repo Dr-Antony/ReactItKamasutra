@@ -15,8 +15,8 @@ const Body = (props) => {
             <Nav />
             <div className='content'>
                 <Routes>
-                    <Route path="/Messages/*" element={<Messages dialogsData={props.state.messagesPage.dialogsData} messagesData={props.state.messagesPage.messagesData} addMessage={props.addMessage} />} />
-                    <Route path="/Profile" element={<Profile postsData={props.state.profilePage} addPost={props.addPost} updateTextPost={props.updateTextPost} />} />
+                    <Route path="/Messages/*" element={<Messages dialogsData={props.state.messagesPage.dialogsData} messagesData={props.state.messagesPage.messagesData} dispatch={props.dispatch} />} />
+                    <Route path="/Profile" element={<Profile postsData={props.state.profilePage} dispatch={props.dispatch} />} />
                     <Route path="/Music" element={<Music />} />
                     <Route path="/News" element={<News />} />
                     <Route path="/Settings" element={<Settings />} />
