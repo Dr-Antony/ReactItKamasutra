@@ -4,7 +4,9 @@ import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
 import Dialogs from './DialogWindow/DialogWindow';
 
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { addMessageActionCreator } from '../../../../../redux/state';
+
+
 
 
 const Messages = (props) => {
@@ -22,7 +24,7 @@ const Messages = (props) => {
 
     let sendMessage = () => {
         let text = newMessage.current.value;
-        props.dispatch({type: 'ADD-MESSAGE',textOfNewMessage: text });
+        props.dispatch(addMessageActionCreator(text));
     };
 
 

@@ -2,6 +2,10 @@ import React from 'react';
 import style from './posts.module.css'
 import Post from './post/post';
 
+import { addPostActionCreator, chengeTextActionCreator } from '../../../../../../redux/state';
+
+
+
 const Posts = (props) => {
     let postsArray = props.postsData.postsData.map((p)=>{
         return (<Post message = {p.message} likeCount = {p.likeCount} /> )
@@ -10,12 +14,12 @@ const Posts = (props) => {
 
     let addPost = () => {
         let text = newPostElement.current.value;
-        props.dispatch({type:'ADD-POST', textOfNewPost: text});
+        props.dispatch(addPostActionCreator(text));
     };
 
     let changeText = () => {
         let text = newPostElement.current.value;
-        props.dispatch({type:'UPDATE-TEXT-OF-POST',updateText: text })
+        props.dispatch(chengeTextActionCreator(text))
     };
 
 

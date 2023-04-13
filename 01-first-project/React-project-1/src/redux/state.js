@@ -1,3 +1,8 @@
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_POST = 'ADD-POST';
+const UPDATE_TEXT_OF_POST ='UPDATE-TEXT-OF-POST';
+
+
 let store = {
     _state: {
         messagesPage: {
@@ -77,4 +82,24 @@ let store = {
     }
 };
 
+export const addMessageActionCreator = (text) => {
+    return {type: ADD_MESSAGE,textOfNewMessage: text }
+};
+export const addPostActionCreator = (text) => {
+    return {type: ADD_POST, textOfNewPost: text}
+};
+export const chengeTextActionCreator = (text) => {
+    return {type: UPDATE_TEXT_OF_POST,updateText: text }
+};
+
+
 export default store;
+
+
+
+
+// S. Принцип единственной ответственности(Single responsibility)
+// O. Принцип открытости/закрытости (Open-closed)
+// L. Принцип подстановки Барбары Лисков (Liskov substitution)
+// I. Принцип разделения интерфейса (Interface segregation)
+// D. Принцип инверсии зависимостей (Dependency Invertion)
