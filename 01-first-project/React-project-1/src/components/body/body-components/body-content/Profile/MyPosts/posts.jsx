@@ -2,7 +2,7 @@ import React from 'react';
 import style from './posts.module.css'
 import Post from './post/post';
 
-import { addPostActionCreator, chengeTextActionCreator } from '../../../../../../redux/state';
+import { addPostActionCreator, chengeTextActionCreator } from '../../../../../../redux/profileReducer';
 
 
 

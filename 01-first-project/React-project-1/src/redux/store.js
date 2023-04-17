@@ -1,7 +1,5 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const ADD_POST = 'ADD-POST';
-const UPDATE_TEXT_OF_POST ='UPDATE-TEXT-OF-POST';
-
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
 
 let store = {
     _state: {
@@ -65,32 +63,12 @@ let store = {
         this.reRender = observe;
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = { id: this._state.profilePage.postsData.length += 1, message: action.textOfNewPost, likeCount: 0 };
-            this._state.profilePage.postsData.push(newPost);
-            this.reRender(this._state);
-        }
-        else if (action.type === 'UPDATE-TEXT-OF-POST') {
-            this._state.profilePage.newText = action.updateText;
-            this.reRender(this._state);
-        }
-        else if (action.type === 'ADD-MESSAGE'){
-            let newMessage = { id: this._state.messagesPage.dialogsData.length += 1, message: action.textOfNewMessage };
-            this._state.messagesPage.messagesData.push(newMessage);
-            this.reRender(this._state);
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage,action);
+        this._state.messagesPage = dialogsReducer(this._state.messagesPage,action);
+        this.reRender(this._state);
     }
 };
 
-export const addMessageActionCreator = (text) => {
-    return {type: ADD_MESSAGE,textOfNewMessage: text }
-};
-export const addPostActionCreator = (text) => {
-    return {type: ADD_POST, textOfNewPost: text}
-};
-export const chengeTextActionCreator = (text) => {
-    return {type: UPDATE_TEXT_OF_POST,updateText: text }
-};
 
 
 export default store;

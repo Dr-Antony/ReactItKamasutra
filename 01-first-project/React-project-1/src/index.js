@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './redux/state';
+import store from './redux/reduxStore';
 
 
 
@@ -18,4 +18,7 @@ export let Render = (state) => {
 
 Render(store.getState());
 
-store.subscribe(Render);
+store.subscribe(()=> {
+    let state = store.getState();
+    Render(state);
+});

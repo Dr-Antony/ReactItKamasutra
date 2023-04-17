@@ -4,7 +4,7 @@ import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
 import Dialogs from './DialogWindow/DialogWindow';
 
-import { addMessageActionCreator } from '../../../../../redux/state';
+import { addMessageActionCreator } from '../../../../../redux/dialogsReducer';
 
 
 
