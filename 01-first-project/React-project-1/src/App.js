@@ -12,12 +12,13 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 
 const App = (props) => {
+
   return (
     <BrowserRouter>
       <div className='wrapper'>
         <div className='container'>
           <Header />
-          <Body state={props.state} dispatch={props.dispatch} />
+          <Body store={props.store} />
           <Footer />
         </div>
       </div>
