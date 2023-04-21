@@ -18,7 +18,7 @@ const App = (props) => {
       <div className='wrapper'>
         <div className='container'>
           <Header />
-          <Body store={props.store} />
+          <Body  />
           <Footer />
         </div>
       </div>

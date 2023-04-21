@@ -15,8 +15,8 @@ const Body = (props) => {
             <Nav />
             <div className='content'>
                 <Routes>
-                    <Route path="/Messages/*" element={<MessagesContainer store={props.store} />} />
-                    <Route path="/Profile" element={<Profile store={props.store} />} />
+                    <Route path="/Messages/*" element={<MessagesContainer/>} />
+                    <Route path="/Profile" element={<Profile/>} />
                     <Route path="/Music" element={<Music />} />
                     <Route path="/News" element={<News />} />
                     <Route path="/Settings" element={<Settings />} />
