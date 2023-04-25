@@ -6,9 +6,6 @@ import store from './redux/reduxStore';
 import { Provider } from 'react-redux';
 
 
-
-
-export let Render = (state) => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
         <React.StrictMode>
@@ -17,11 +14,5 @@ export let Render = (state) => {
             </Provider>
         </React.StrictMode>
     );
-};
 
-Render(store.getState());
 
-store.subscribe(()=> {
-    let state = store.getState();
-    Render(state);
-});

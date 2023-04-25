@@ -15,10 +15,12 @@ let mapDispatchToProps = (dispatch) => {
     return {
         addPost: (text) => { dispatch(addPostActionCreator(text)); },
         updateNewPostText: (text) => {
+            
             let action = chengeTextActionCreator(text);
             dispatch(action);
         }
     };
+    
 };
 
 const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts)

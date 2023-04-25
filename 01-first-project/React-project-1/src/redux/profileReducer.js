@@ -3,20 +3,26 @@ const UPDATE_TEXT_OF_POST = 'UPDATE-TEXT-OF-POST';
 
 let initialState = {
     postsData: [
-        { id: 0, message: 'Hello it my first pussy', likeCount: 5 },
-        { id: 1, message: 'I liked your ass', likeCount: 112 }
+        { message: 'Hello it my first pussy', likeCount: 5 },
+        { message: 'I liked your ass', likeCount: 112 }
     ],
     newText: ''
 };
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_POST: let newPost = { id: state.postsData.length += 1, message: action.textOfNewPost, likeCount: 0 };
-            state.postsData.push(newPost);
-            return state;
-        case UPDATE_TEXT_OF_POST: state.newText = action.updateText;
-        
-        return state;
+        case ADD_POST: {
+            // let newPost = { message: action.textOfNewPost, likeCount: 0 };
+            // let stateCopy = { ...state, postsData: [...state.postsData, { message: action.textOfNewPost, likeCount: 0 }], newText : ''  };
+            // stateCopy.postsData.push(newPost);
+            // stateCopy.newText = '';
+            return { ...state, postsData: [...state.postsData, { message: action.textOfNewPost, likeCount: 0 }], newText : ''  };;
+        }
+        case UPDATE_TEXT_OF_POST: {
+            // let stateCopy = { ...state, newText : action.updateText};
+            // stateCopy.newText = action.updateText;
+            return { ...state, newText : action.updateText};
+        }
     };
     return state;
 };

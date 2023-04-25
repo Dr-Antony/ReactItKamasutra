@@ -1,5 +1,5 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_TEXT_OF_MESSAGE =  'CHANGE-MESSAGE';
+const UPDATE_TEXT_OF_MESSAGE = 'CHANGE-MESSAGE';
 let initialState = {
     dialogsData: [
         {
@@ -39,19 +39,26 @@ let initialState = {
         }
     ],
     messagesData: [
-        { id: 0, message: 'Hello' },
-        { id: 1, message: 'My name is Anton, and i have a fear.' },
-        { id: 2, message: 'Why, bro ?' }
+        { message: 'Hello' },
+        { message: 'My name is Anton, and i have a fear.' },
+        { message: 'Why, bro ?' }
     ],
-    newText:''
+    newText: ''
 };
 
 const dialogsReducer = (state = initialState, action) => {
+    debugger
     switch (action.type) {
-        case ADD_MESSAGE: let newMessage = { id: state.dialogsData.length += 1, message: action.textOfNewMessage };
-            state.messagesData.push(newMessage);
-            return state;
-        case UPDATE_TEXT_OF_MESSAGE: state.newText = action.updateText;
+        case ADD_MESSAGE: {
+            // let newMessage = {  message: action.textOfNewMessage };
+            // let stateCopy = { ...state, messagesData: [...state.messagesData, { message: action.textOfNewMessage }],newText :'' }
+            // stateCopy.messagesData.push(newMessage);
+            // stateCopy.newText = '';
+            return { ...state, messagesData: [...state.messagesData, { message: action.textOfNewMessage }], newText: '' };
+        }
+        case UPDATE_TEXT_OF_MESSAGE: {
+            return { ...state, newText: action.updateText };
+        }
     };
     return state;
 };

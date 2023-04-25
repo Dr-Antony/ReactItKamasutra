@@ -15,7 +15,7 @@ const Messages = (props) => {
         return (<MessageItem message={m.message} />)
     });
     let newMessage = React.createRef();
-
+    
 
     let onSendMessage = () => {
         let text = newMessage.current.value;
@@ -26,7 +26,7 @@ const Messages = (props) => {
         let text = newMessage.current.value;
         props.changeTextMessage(text);
     };
-
+    debugger
 
     return (
         <div className={style.messages}>
