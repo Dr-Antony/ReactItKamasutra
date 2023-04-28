@@ -19,7 +19,7 @@ const App = (props) => {
         <div className='container'>
           <Header />
           <Body  />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </BrowserRouter>

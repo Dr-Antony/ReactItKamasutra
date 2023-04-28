@@ -7,6 +7,7 @@ import MessagesContainer from './body-components/body-content/Messages/messagesC
 import Music from './body-components/body-content/Music/Music';
 import News from './body-components/body-content/News/News';
 import Settings from './body-components/body-content/Settings/Settings';
+import UsersContainer from './body-components/body-content/Users/UsersContainer';
 
 
 const Body = (props) => {
@@ -19,6 +20,7 @@ const Body = (props) => {
                     <Route path="/Profile" element={<Profile/>} />
                     <Route path="/Music" element={<Music />} />
                     <Route path="/News" element={<News />} />
+                    <Route path="/Users" element={<UsersContainer />} />
                     <Route path="/Settings" element={<Settings />} />
                 </Routes>
             </div>

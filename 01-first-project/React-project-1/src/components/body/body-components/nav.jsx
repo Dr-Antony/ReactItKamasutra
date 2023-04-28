@@ -10,6 +10,7 @@ const Nav = () => {
                     <li className='nav__item'><NavLink className='nav__button button' to='/Messages/*'>Messages</NavLink></li>
                     <li className='nav__item'><NavLink className='nav__button button' to='/News'>News</NavLink></li>
                     <li className='nav__item'><NavLink className='nav__button button' to='/Music'>Music</NavLink></li>
+                    <li className='nav__item'><NavLink className='nav__button button' to='/Users'>Users</NavLink></li>
                     <li className='nav__item'><NavLink className='nav__button button last-button' to='/Settings'>Settings</NavLink></li>
                 </ul>
             </div>
