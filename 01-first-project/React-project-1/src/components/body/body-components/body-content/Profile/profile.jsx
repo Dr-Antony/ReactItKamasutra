@@ -1,19 +1,24 @@
 import React from 'react';
 import './profile.css';
+import userPhoto from '../../../../../img/userPhoto.png';
+import backGround from '../../../../../img/backGround.jpeg';
+
+
 
 import PostsContainer from './MyPosts/postsContainer';
 
 const Profile = (props) => {
 
     return (
-        <div className='content_profile'>
-            <div className='profile__image'><img src='' /></div>
+        <div className='profile'>
             <div className='profile__user'>
-                <div className='user__photo'></div>
-                <div className='user__info'>
-                </div>
+                <div className='user__background_img'><img src={backGround}/></div>
+                <div className='user__avatar'><img src={userPhoto}/></div>
+                <div className='user__name'>Anton Nedialkov</div>
             </div>
-            <PostsContainer/>
+            <div className='profile__posts'>
+                <PostsContainer />
+            </div>
         </div>
     );
 };

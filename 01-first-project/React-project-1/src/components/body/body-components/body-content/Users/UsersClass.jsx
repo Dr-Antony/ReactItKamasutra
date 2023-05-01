@@ -5,13 +5,11 @@ import UserItem from "./UserItem/UserItem";
 import style from './Users.module.css';
 
 class Users extends React.Component {
-    getUsers = () => {
-        if (this.props.state.users.length === 0) {
-            debugger
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-                this.props.setUsers(response.data.items);
-            })
-        };
+    constructor(props) {
+        super(props)
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            this.props.setUsers(response.data.items);
+        })
     }
     allUsers = () => {
         return (
@@ -24,7 +22,6 @@ class Users extends React.Component {
     render() {
         return (
             <div className={style.users__wrapper}>
-                <button onClick={this.getUsers}>Get users</button>
                 {this.allUsers()}
             </div>
         )

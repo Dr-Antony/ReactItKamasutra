@@ -4,7 +4,7 @@ import './reset.css'
 import Header from './components/header/header';
 import Body from './components/body/body';
 import Footer from './components/footer/footer';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter,} from "react-router-dom";
 
 
 
@@ -19,7 +19,7 @@ const App = (props) => {
         <div className='container'>
           <Header />
           <Body  />
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </div>
     </BrowserRouter>

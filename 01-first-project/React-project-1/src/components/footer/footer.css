@@ -1,18 +1,7 @@
 .footer {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin-bottom: 1em;
-    width: 1200px;
-    height: 150px;
     background-color: rgb(83, 145, 153);
-    border-radius: 1em;
-    justify-items: center;
-    align-items: center;
 }
 
 .footer__content {
-    width: 90%;
-    height: 80%;
     background-color: #031d4e;
-    border-radius: 1em;
 }

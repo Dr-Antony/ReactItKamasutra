@@ -1,29 +1,25 @@
 .nav {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    width: 90%;
-    height: 90%;
-    background-color: #031d4e;
-    border-radius: 1em;
-    margin-left: 4em;
 }
 
-.nav__items {}
+.nav__items {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    text-align: center;
+}
 
 .nav__item {
-    background-color: #031d4e;
+    padding-top: 1em;
 }
 
 .nav__button {
-    width: 145px;
-    text-align: center;
+    width: 142px;
+    height: 55px;
     background: rgb(118, 131, 156);
-    margin-bottom: 1em;
 }
 
 .last-button {
-    margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 .nav__button.active {

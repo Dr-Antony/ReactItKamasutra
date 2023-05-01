@@ -1,23 +1,22 @@
 .body {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    width: 1200px;
-    height: 550px;
-    background-color: rgb(83, 145, 153);
-    border-radius: 1em;
-    justify-items: center;
-    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
 }
 
 /* ============ */
-.content {
-    display: grid;
-    width: 90%;
-    height: 90%;
+.navigation{
+    flex-basis: 22%;
     background-color: #031d4e;
     border-radius: 1em;
+    max-width: 257px;
+    max-height: 445px;
+}
+.content {
+    flex-basis: 75%;
+    background-color: #031d4e;
+    border-radius: 1em;
+    padding: 1em;
 }
 /* ============ */
 

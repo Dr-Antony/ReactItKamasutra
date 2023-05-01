@@ -1,20 +1,20 @@
-/* * {
-  background-color: rgb(189, 228, 238);
-} */
+
 
 .wrapper {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: 1fr;
-  /* grid-template-rows: 1fr; */
   background-color: rgb(189, 228, 238);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
 
-.container {}
+.container {
+  width: 1200px;
+}
 
 .button {
   display: inline-block;
-  background: red;
   font-weight: 700;
   letter-spacing: 0.5px;
   line-height: 52px;

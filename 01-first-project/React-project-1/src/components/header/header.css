@@ -1,26 +1,17 @@
 .header {
-    margin-top: 1em;
-    width: 1200px;
-    height: 200px;
-    background-color: rgb(83, 145, 153);
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    justify-items: center;
-    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+.header__logo {
+    background-color: #031d4e;
+    height: 100px;
+    flex-basis: 9%;
     border-radius: 1em;
 }
-
-.header__logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 20%;
-    background-color: #031d4e;
-}
-
 .header__content {
-    width: 100%;
-    height: 80%;
-    border-radius: 10px;
-    margin-right: 10%;
     background-color: #031d4e;
+    height: 100px;
+    flex-basis: 90%;
+    border-radius: 1em;
 }
