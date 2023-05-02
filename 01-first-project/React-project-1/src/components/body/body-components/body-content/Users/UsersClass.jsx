@@ -1,7 +1,6 @@
 import axios from "axios";
 import React from "react";
 import UserItem from "./UserItem/UserItem";
-
 import style from './Users.module.css';
 
 class Users extends React.Component {
@@ -13,6 +12,7 @@ class Users extends React.Component {
     }
     allUsers = () => {
         return (
+            
             this.props.state.users.map((user) => {
                 debugger
                 return (<UserItem id={user.id} followed={user.followed} key={user.id} photo={user.photos} name={user.name} status={user.status} functions={this.props} />)

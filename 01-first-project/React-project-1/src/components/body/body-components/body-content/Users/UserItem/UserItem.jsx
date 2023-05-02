@@ -4,10 +4,11 @@ import userPhoto from './../../../../../../img/userPhoto.png'
 
 
 class UserItem extends React.Component {
-    debugger
+    
     constructor(props) {
         super(props)
     }
+    debugger
     render() {
         return (
             <div className={style.userItem__wrapper}>
@@ -15,7 +16,7 @@ class UserItem extends React.Component {
                     <div className={style.userItem__subscribe}>
                         <div className={style.userItem__subscribe_photo}><img src={this.props.photo.small != null ? this.props.photo.small : userPhoto} /></div>
                         <div className={style.userItem__subscribe_btn}>
-                            {this.props.followed ? <button onClick={() => { this.props.functions.unFollow(this.props.id) }} >Unfollow</button> : <button onClick={() => { this.props.functions.follow(this.props.id) }} >Follow</button>}
+                            {this.props.followed ? <button className={style.btn__unfollow} onClick={() => { this.props.functions.unFollow(this.props.id) }} >Unfollow</button> : <button className={style.btn__follow} onClick={() => { this.props.functions.follow(this.props.id) }} >Follow</button>}
                         </div>
                     </div>
                     <div className={style.userItem__info}>
@@ -25,9 +26,11 @@ class UserItem extends React.Component {
                         </div>
                         <div className={style.userItem__info_location}>
                             <div className={style.userItem__info_country}>
+                                Country
                                 {/* {props.location.country} */}
                             </div>
                             <div className={style.userItem__info_city}>
+                                City
                                 {/* {props.location.city} */}
                             </div>
                         </div>

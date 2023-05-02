@@ -8,9 +8,6 @@ import {BrowserRouter,} from "react-router-dom";
 
 
 
-
-
-
 const App = (props) => {
 
   return (
@@ -27,3 +24,22 @@ const App = (props) => {
 };
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

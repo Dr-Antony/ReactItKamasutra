@@ -3,12 +3,26 @@
     justify-content: space-between;
     padding: 1em;
 }
+
 .header__logo {
     background-color: #031d4e;
     height: 100px;
     flex-basis: 9%;
     border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.header__logo img {
+    width: 90px;
+    height: 90px;
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    border-image-source: linear-gradient(to left, #291647, #260a72);
+}
+
 .header__content {
     background-color: #031d4e;
     height: 100px;
