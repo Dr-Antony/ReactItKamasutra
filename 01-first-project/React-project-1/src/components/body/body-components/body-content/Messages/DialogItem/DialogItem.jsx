@@ -9,8 +9,10 @@ class DialogItem extends React.Component {
     path = '/Messages/' + this.props.name;
     render() {
         return (
-            <div className={style.item}>
-                <NavLink to={this.path}>{this.props.name}</NavLink>
+            <div className={style.item_container}>
+                <div className={style.item_element}>
+                    <NavLink to={this.path}>{this.props.name}</NavLink>
+                </div>
             </div>
         )
     }

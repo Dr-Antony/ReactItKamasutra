@@ -1,7 +1,15 @@
-.item {
-
+.item_container {
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-image-source: linear-gradient(to left, #743ad5, #be6ea1);
+    margin: 5px 0;
 }
 
-.item {
+.item_element {
+    color: white;
 }
-

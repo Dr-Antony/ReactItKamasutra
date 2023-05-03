@@ -40,7 +40,7 @@ let initialState = {
     ],
     messagesData: [
         { message: 'Hello' },
-        { message: 'My name is Anton, and i have a fear.' },
+        { message: 'I will fuck your ass!' },
         { message: 'Why, bro ?' }
     ],
     newText: ''

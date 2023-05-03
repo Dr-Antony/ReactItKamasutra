@@ -9,7 +9,10 @@ class MessageItem extends React.Component {
     }
     render() {
         return (
-            <div className={style.message}>{this.props.message}</div>
+            <div className={style.message_container}>
+                <div className={style.message}>{this.props.message}</div>
+            </div>
+            
         )
     }
 }

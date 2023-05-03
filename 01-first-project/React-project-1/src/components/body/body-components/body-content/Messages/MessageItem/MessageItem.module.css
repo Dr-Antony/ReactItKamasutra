@@ -1,3 +1,13 @@
-.message {
+.message_container {
+    background: rgb(118, 131, 156);
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    margin: 5px;
+    border-radius: 1em;
+    padding: 10px;
+}
 
+.message {
+    color: white;
 }

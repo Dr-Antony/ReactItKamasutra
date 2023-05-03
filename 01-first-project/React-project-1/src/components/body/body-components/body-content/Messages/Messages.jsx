@@ -41,18 +41,22 @@ class Messages extends React.Component  {
 render(){
     return (
         <div className={style.messages}>
-            <div className={style.dialogs}>
-                {this.dialogsElements()}
+            <div className={style.dialogs__users_wrapper}>
+                <div className={style.dialogs__users_container}>
+                    {this.dialogsElements()}
+                </div>
             </div>
-            <div className={style.dialog__window}>
-            <div className={style.dialog__window_msgs}>
+            <div className={style.dialog__window_wrapper}>
+                <div className={style.dialog__window_container} >
+                <div className={style.dialog__window_msgs}>
                 {this.mesagesElements()}
             </div>
             <div className={style.dialog__window_send}>
                 <div><textarea className={style.textArea} onChange={this.changeText} ref={this.newMessage} value={this.props.state.newText}></textarea></div>
                 <div><button onClick={this.onSendMessage} className={style.button}>Send</button></div>
+                </div>
+                </div>
             </div>
-        </div>
         </div>
     )
 }

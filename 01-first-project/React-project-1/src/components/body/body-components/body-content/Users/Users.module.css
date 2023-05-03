@@ -1,3 +1,38 @@
+.unselected_page{
+    transition: all .3s;
+    background-color: #ddd6d6;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    flex-basis: 20%;
+    margin: 5px;
+    border-radius: 4px;
+}
+.selected_page {
+    transition: all .3s;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    flex-basis: 20%;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+.users__container {
+    display: flex;
+    justify-content: space-around;
+}
+
 .users__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     color: aqua;
 }
