@@ -4,13 +4,12 @@ import userPhoto from './../../../../../../img/userPhoto.png'
 
 
 class UserItem extends React.Component {
-    
     constructor(props) {
         super(props)
     }
-    debugger
     render() {
         return (
+            
             <div className={style.userItem__wrapper}>
                 <div className={style.container}>
                     <div className={style.userItem__subscribe}>
