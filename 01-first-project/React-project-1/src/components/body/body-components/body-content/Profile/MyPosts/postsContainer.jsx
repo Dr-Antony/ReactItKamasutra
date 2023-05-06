@@ -1,6 +1,6 @@
-import React from 'react';
+
 import Posts from './posts';
-import { addPostActionCreator, chengeTextActionCreator } from '../../../../../../redux/profileReducer';
+import { addPostActionCreator, chengeTextActionCreator,likeAC } from '../../../../../../redux/profileReducer';
 import { connect } from 'react-redux';
 
 
@@ -15,7 +15,6 @@ let mapDispatchToProps = (dispatch) => {
     return {
         addPost: (text) => { dispatch(addPostActionCreator(text)); },
         updateNewPostText: (text) => {
-            
             let action = chengeTextActionCreator(text);
             dispatch(action);
         }

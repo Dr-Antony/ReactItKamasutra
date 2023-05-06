@@ -18,6 +18,9 @@ class Post extends React.Component {
                     <div className={s.like__count}>
                         <div>{this.props.likeCount + ' '}<span>likes</span></div>
                     </div>
+                    <div className={s.do_like}>
+                        <button  className={s.do_like_btn}>like</button>
+                    </div>
                 </div>
             </div>
         )

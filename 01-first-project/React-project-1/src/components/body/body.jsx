@@ -2,7 +2,7 @@ import React from 'react';
 import './body.css'
 import Nav from './body-components/nav';
 import { Routes, Route } from "react-router-dom";
-import Profile from './body-components/body-content/Profile/profile';
+import ProfileContainer from './body-components/body-content/Profile/ProfileContainer';
 import MessagesContainer from './body-components/body-content/Messages/messagesContainer';
 import Music from './body-components/body-content/Music/Music';
 import News from './body-components/body-content/News/News';
@@ -19,7 +19,8 @@ const Body = (props) => {
             <div className='content'>
                 <Routes>
                     <Route path="/Messages/*" element={<MessagesContainer />} />
-                    <Route path="/Profile" element={<Profile />} />
+                    <Route path="/Profile/:userId?" element={<ProfileContainer />} />
+                    <Route path="/Profile/" element={<ProfileContainer />} />
                     <Route path="/Music" element={<Music />} />
                     <Route path="/News" element={<News />} />
                     <Route path="/Users" element={<UsersContainer />} />

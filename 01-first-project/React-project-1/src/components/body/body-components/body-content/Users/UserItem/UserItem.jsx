@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import style from './UserItem.module.css'
 import userPhoto from './../../../../../../img/userPhoto.png'
 
@@ -9,11 +10,14 @@ class UserItem extends React.Component {
     }
     render() {
         return (
-            
             <div className={style.userItem__wrapper}>
                 <div className={style.container}>
                     <div className={style.userItem__subscribe}>
-                        <div className={style.userItem__subscribe_photo}><img src={this.props.photo.small != null ? this.props.photo.small : userPhoto} /></div>
+                        <div className={style.userItem__subscribe_photo}>
+                            <NavLink  to={`/Profile/${this.props.id}`}>
+                                <img  src={this.props.photo.small != null ? this.props.photo.small : userPhoto} />
+                            </NavLink>
+                        </div>
                         <div className={style.userItem__subscribe_btn}>
                             {this.props.followed ? <button className={style.btn__unfollow} onClick={() => { this.props.functions.unFollow(this.props.id) }} >Unfollow</button> : <button className={style.btn__follow} onClick={() => { this.props.functions.follow(this.props.id) }} >Follow</button>}
                         </div>

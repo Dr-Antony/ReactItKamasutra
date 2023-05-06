@@ -1,27 +1,27 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_TEXT_OF_POST = 'UPDATE-TEXT-OF-POST';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const ADD_LIKE = 'ADD-LIKE'
 
 let initialState = {
     postsData: [
         { message: 'Hello it my first pussy', likeCount: 5 },
         { message: 'I liked your ass', likeCount: 112 }
     ],
-    newText: ''
+    newText: '',
+    profile: null
 };
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            // let newPost = { message: action.textOfNewPost, likeCount: 0 };
-            // let stateCopy = { ...state, postsData: [...state.postsData, { message: action.textOfNewPost, likeCount: 0 }], newText : ''  };
-            // stateCopy.postsData.push(newPost);
-            // stateCopy.newText = '';
             return { ...state, postsData: [...state.postsData, { message: action.textOfNewPost, likeCount: 0 }], newText : ''  };;
         }
         case UPDATE_TEXT_OF_POST: {
-            // let stateCopy = { ...state, newText : action.updateText};
-            // stateCopy.newText = action.updateText;
             return { ...state, newText : action.updateText};
+        }
+        case SET_USER_PROFILE: {
+            return { ...state, profile: action.profile};
         }
     };
     return state;
@@ -33,5 +33,7 @@ export const addPostActionCreator = (text) => {
 export const chengeTextActionCreator = (text) => {
     return { type: UPDATE_TEXT_OF_POST, updateText: text }
 };
-
+export const setUserProfile = (profile) => {
+    return { type: SET_USER_PROFILE, profile }
+};
 export default profileReducer;

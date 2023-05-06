@@ -8,7 +8,7 @@ class Posts extends React.Component {
     allPosts = () => {
         return (
             this.props.postsData.map((p) => {
-                return (<Post message={p.message} likeCount={p.likeCount} />)
+                return (<Post message={p.message} likeCount={p.likeCount}  />)
             })
         )
     };
