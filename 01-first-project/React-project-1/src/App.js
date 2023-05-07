@@ -4,17 +4,17 @@ import './reset.css'
 import Header from './components/header/header';
 import Body from './components/body/body';
 import Footer from './components/footer/footer';
+import HeaderContainer from './components/header/headerContainer';
 import {BrowserRouter,} from "react-router-dom";
 
 
 
-const App = (props) => {
-
+const App = () => {
   return (
     <BrowserRouter>
       <div className='wrapper'>
         <div className='container'>
-          <Header />
+          <HeaderContainer />
           <Body  />
           <Footer />
         </div>

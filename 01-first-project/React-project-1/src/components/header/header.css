@@ -23,9 +23,58 @@
     border-image-source: linear-gradient(to left, #291647, #260a72);
 }
 
+
+
+
+
+
+
 .header__content {
+    display: flex;
     background-color: #031d4e;
     height: 100px;
     flex-basis: 90%;
     border-radius: 1em;
 }
+
+.header__navigation{
+    flex-basis: 70%;
+}
+
+
+
+
+.header__auth{
+    display: flex;
+    flex-basis: 25% ;
+    justify-content:flex-end;
+    align-items: center;
+}
+.auth__login{
+margin-right: 5px;
+
+}
+.auth__registration{
+
+
+}
+.auth__btn{
+    color: white;
+    border: 2px solid rgb(118, 131, 156);
+    border-radius: 4px;
+    padding: 10px;
+    transition: all .3s;
+}
+.auth__btn:hover{
+    width: 100%;
+    color: black;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    transition: all .5s ;
+    
+}
+
+
+
+
+
+
