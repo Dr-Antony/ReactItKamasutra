@@ -1,6 +1,5 @@
 .message_container {
-    background: rgb(118, 131, 156);
-    border: 10px solid;
+    border: 10px solid rgb(99, 96, 96);
     border-image-slice: 1;
     border-width: 3px;
     margin: 5px;
