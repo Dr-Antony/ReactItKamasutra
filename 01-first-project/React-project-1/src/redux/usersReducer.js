@@ -4,7 +4,6 @@ const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const FETCHING = 'FETCHING';
-// const FATCHING_FALSE = 'FATCHING-FALSE'
 
 let initialState = {
     users: [],
