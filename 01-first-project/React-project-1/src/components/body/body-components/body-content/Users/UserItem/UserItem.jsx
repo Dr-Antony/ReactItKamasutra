@@ -4,6 +4,8 @@ import style from './UserItem.module.css'
 import userPhoto from './../../../../../../img/userPhoto.png'
 import axios from "axios";
 
+import { usersAPI } from "../../../../../../api/apiOfUsers";
+
 class UserItem extends React.Component {
     constructor(props) {
         super(props)
@@ -20,14 +22,7 @@ class UserItem extends React.Component {
                         </div>
                         <div className={style.userItem__subscribe_btn}>
                             {this.props.followed ?
-                                <button className={style.btn__unfollow} onClick={() => {
-                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${this.props.id}`, { withCredentials: true, headers: { "API-KEY": "d58c2d5f-0707-4689-9a81-2885da2de5f9" } })
-                                        .then(response => {
-                                            if (response.data.resultCode === 0) {
-                                                this.props.functions.unFollow(this.props.id)
-                                            }
-                                        })
-                                }} >Unfollow</button>
+                                <button className={style.btn__unfollow} onClick={(e)=>{this.props.functions.unfollowUsr(this.props.id)}} >Unfollow</button>
                                 :
                                 <button className={style.btn__follow} onClick={() => {
                                     axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${this.props.id}`, null, { withCredentials: true, headers: { "API-KEY": "d58c2d5f-0707-4689-9a81-2885da2de5f9" } })

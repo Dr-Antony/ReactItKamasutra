@@ -78,10 +78,14 @@
 background: #4CAF50;
 border: 2px solid #4CAF50;
 transition: all .5s;
-
 }
 
-
+.header__auth-y:hover img{
+    filter: none;
+    }
+.header__auth-y:hover .auth__login {
+    color: rgb(0, 0, 0);
+}
 
 .header__auth-n{
     display: flex;

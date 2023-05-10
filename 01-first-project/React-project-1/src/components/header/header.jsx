@@ -5,6 +5,8 @@ import home2 from '../../img/home2.png'
 import { NavLink } from 'react-router-dom';
 import Preloader from '../common/preloader/preloader';
 
+
+
 const Header = (props) => {
     debugger
     return (
