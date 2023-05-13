@@ -4,9 +4,11 @@ import style from './Users.module.css';
 
 let Users = (props) => {
     let allUsers = () => {
+        
         return (
+            
             props.state.users.map((user) => {
-                return (<UserItem id={user.id} followed={user.followed} key={user.id} photo={user.photos} name={user.name} status={user.status} functions={props} />)
+                return (<UserItem id={user.id} followed={user.followed} key={user.id} photo={user.photos} name={user.name} followingProgress={props.followingProgress} functions={props} />)
             })
         )
     };

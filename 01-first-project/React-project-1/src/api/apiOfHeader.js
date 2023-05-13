@@ -8,13 +8,11 @@ const instance = axios.create({
 })
 
 
-export const headerAPI = () => {
-    return {
-        getUserData: () => {
+export const headerAPI =  {
+        getMyData: () => {
             return (
                 instance.get(`/auth/me`).then(response => response.data)
             )
         }
-    }
 };
 

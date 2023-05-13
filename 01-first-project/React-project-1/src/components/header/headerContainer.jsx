@@ -4,16 +4,16 @@ import React from "react";
 import axios from "axios";
 import { setAuthUserData , setFetching } from "../../redux/authReducer";
 
-import { usersAPI } from "../../api/apiOfUsers";
+import { headerAPI } from "../../api/apiOfHeader";
 
 class HeaderContainer extends React.Component {
-    debugger
+    
     componentDidMount() {
-        debugger
+       
         this.props.setFetching(true)
-        usersAPI.getMyData()
+        headerAPI.getMyData()
         .then(data => {
-            debugger
+            
             this.props.setFetching(false)
             let {id,email,login} = data.data;
             if (data.resultCode === 0  ) {

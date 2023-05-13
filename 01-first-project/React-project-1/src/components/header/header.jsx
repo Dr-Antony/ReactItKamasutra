@@ -8,7 +8,7 @@ import Preloader from '../common/preloader/preloader';
 
 
 const Header = (props) => {
-    debugger
+    
     return (
         <header className='header'>
             <div className='header__logo'><img src={logo} /></div>
