@@ -1,10 +1,10 @@
 
 import { connect } from "react-redux";
-import { follow, unfollow, setUsers, setPage, setTotalCount, setFetching, setFollowingProgress } from "../../../../../redux/usersReducer";
+import { setUsers, setPage, setFollowingProgress, getUsersTC, followTC, unfollowTC } from "../../../../../redux/usersReducer";
 import React from "react";
 import Users from './Users'
 import Preloader from "../../../../common/preloader/preloader";
-import { usersAPI } from "../../../../../api/apiOfUsers";
+
 
 
 
@@ -12,42 +12,28 @@ class UsersAPI extends React.Component {
     constructor(props) {
         super(props)
     }
+
+
+
     componentDidMount() {
-        this.props.setFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.setFetching(false)
-            this.props.setUsers(data.items);
-            this.props.setTotalCount(data.totalCount);
-        })
+        this.props.getUsersTC(this.props.currentPage, this.props.pageSize)
     }
     pageChange = (pageNumber) => {
-        this.props.setFetching(true)
         this.props.setPage(pageNumber)
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.setFetching(false)
-            this.props.setUsers(data.items);
-        })
+        this.props.getUsersTC(pageNumber, this.props.pageSize)
     }
     unfollowUsr = async (usrId) => {
-        this.props.setFollowingProgress(true, usrId);
-        usersAPI.unfollowUser(usrId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    this.props.unfollow(usrId)
-                    this.props.setFollowingProgress(false, usrId);
-                }
-            })
+        this.props.unfollowTC(usrId)
     }
     followUsr = (usrId) => {
-        this.props.setFollowingProgress(true, usrId);
-        usersAPI.followUser(usrId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    this.props.follow(usrId)
-                    this.props.setFollowingProgress(false, usrId);
-                }
-            })
+        this.props.followTC(usrId)
     }
+
+
+
+
+
+
     render() {
         return (
             <>
@@ -66,12 +52,11 @@ class UsersAPI extends React.Component {
                     follow={this.props.follow}
                     setFollowingProgress={this.props.setFollowingProgress}
                     followingProgress={this.props.followingProgress}
-                    
+
                 />
             </>)
     }
 }
-// unFollow={this.props.unfollow}
 
 let mapStateToProps = (state) => {
     return {
@@ -87,13 +72,10 @@ let mapStateToProps = (state) => {
 
 
 const UsersContainer = connect(mapStateToProps, {
-    follow,
-    unfollow,
     setUsers,
     setPage,
-    setTotalCount,
-    setFetching,
-    setFollowingProgress
+    setFollowingProgress,
+    getUsersTC, followTC, unfollowTC
 })(UsersAPI)
 
 export default UsersContainer;

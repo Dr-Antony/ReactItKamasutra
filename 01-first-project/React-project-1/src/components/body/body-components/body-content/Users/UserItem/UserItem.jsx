@@ -21,10 +21,12 @@ class UserItem extends React.Component {
                         <div className={style.userItem__subscribe_btn}>
                             {this.props.followed ?
                                 <button disabled={this.props.followingProgress.some(id => id === this.props.id)} className={style.btn__unfollow} onClick={(e) => {
+                                    debugger
                                     this.props.functions.unfollowUsr(this.props.id)
                                 }} >Unfollow</button>
                                 :
                                 <button disabled={this.props.followingProgress.some(id => id === this.props.id)} className={style.btn__follow} onClick={(e) => {
+                                    debugger
                                     this.props.functions.followUsr(this.props.id)
                                 }} >Follow</button>}
                         </div>
@@ -55,35 +57,3 @@ export default UserItem;
 
 
 
-
-
-
-// const UserItem = (props) => {
-//     debugger
-//     return (
-//         <div className={style.userItem__wrapper}>
-//             <div className={style.container}>
-//                 <div className={style.userItem__subscribe}>
-//                     <div className={style.userItem__subscribe_photo}><img src={ props.photo.small != null ? props.photo.small: userPhoto}/></div>
-//                     <div className={style.userItem__subscribe_btn}>
-//                         {props.followed ? <button onClick={()=>{props.functions.unFollow(props.id)}} >Unfollow</button>:<button onClick={()=>{props.functions.follow(props.id)}} >Follow</button>}
-//                     </div>
-//                 </div>
-//                 <div className={style.userItem__info}>
-//                     <div className={style.userItem__info_ns}>
-//                         <div className={style.userItem__info_name}>{props.name}</div>
-//                         <div className={style.userItem__info_status}>{props.status}</div>
-//                     </div>
-//                     <div className={style.userItem__info_location}>
-//                         <div className={style.userItem__info_country}>
-//                             {/* {props.location.country} */}
-//                         </div>
-//                         <div className={style.userItem__info_city}>
-//                             {/* {props.location.city} */}
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
