@@ -8,8 +8,14 @@ import anton from '../../../../../img/Anton.jpg'
 
 import PostsContainer from './MyPosts/postsContainer';
 import Preloader from '../../../../common/preloader/preloader';
+import { Navigate } from 'react-router-dom';
 
 const Profile = (props) => {
+    if (!props.isAuth) {
+        return (
+            <Navigate to={'/login'}/>
+        )
+    }
     if(!props.profile){
         <Preloader/>
     } else {

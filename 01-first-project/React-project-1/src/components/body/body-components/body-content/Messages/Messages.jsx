@@ -3,6 +3,7 @@ import style from './Messages.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import MessageItem from './MessageItem/MessageItem';
 
+import { Navigate } from "react-router-dom";
 
 
 
@@ -26,8 +27,6 @@ class Messages extends React.Component  {
     )
 }
     newMessage = React.createRef();
-    
-
     onSendMessage = () => {
         let text = this.newMessage.current.value;
         this.props.sendMessage(text);
@@ -37,9 +36,12 @@ class Messages extends React.Component  {
         let text = this.newMessage.current.value;
         this.props.changeTextMessage(text);
     };
-    debugger
 render(){
+    if(!this.props.isAuth){
+        return <Navigate to={'/login'}/>
+    }
     return (
+        
         <div className={style.messages}>
             <div className={style.dialogs__users_wrapper}>
                 <div className={style.dialogs__users_container}>

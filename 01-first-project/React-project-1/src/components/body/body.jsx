@@ -8,7 +8,7 @@ import Music from './body-components/body-content/Music/Music';
 import News from './body-components/body-content/News/News';
 import Settings from './body-components/body-content/Settings/Settings';
 import UsersContainer from './body-components/body-content/Users/UsersContainer';
-
+import Login from './body-components/body-content/Login/Login';
 
 const Body = (props) => {
     return (
@@ -21,6 +21,7 @@ const Body = (props) => {
                     <Route path="/Messages/*" element={<MessagesContainer />} />
                     <Route path="/Profile/:userId?" element={<ProfileContainer />} />
                     <Route path="/Profile/" element={<ProfileContainer />} />
+                    <Route path="/login" element={<Login/>} />
                     <Route path="/Music" element={<Music />} />
                     <Route path="/News" element={<News />} />
                     <Route path="/Users" element={<UsersContainer />} />
