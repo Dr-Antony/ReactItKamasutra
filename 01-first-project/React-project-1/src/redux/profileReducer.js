@@ -1,7 +1,11 @@
+import { profileAPI } from "../api/apiOfProfile";
+
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_TEXT_OF_POST = 'UPDATE-TEXT-OF-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const ADD_LIKE = 'ADD-LIKE'
+
+
 
 let initialState = {
     postsData: [
@@ -15,13 +19,13 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            return { ...state, postsData: [...state.postsData, { message: action.textOfNewPost, likeCount: 0 }], newText : ''  };;
+            return { ...state, postsData: [...state.postsData, { message: action.textOfNewPost, likeCount: 0 }], newText: '' };;
         }
         case UPDATE_TEXT_OF_POST: {
-            return { ...state, newText : action.updateText};
+            return { ...state, newText: action.updateText };
         }
         case SET_USER_PROFILE: {
-            return { ...state, profile: action.profile};
+            return { ...state, profile: action.profile };
         }
     };
     return state;
@@ -36,4 +40,20 @@ export const chengeTextActionCreator = (text) => {
 export const setUserProfile = (profile) => {
     return { type: SET_USER_PROFILE, profile }
 };
+
+
+
+export const getProfileApiTC = (userId) => {
+    return (dispatch) => {
+        profileAPI.getProfile(userId).then((data) => {
+            dispatch(setUserProfile(data))
+        })
+    }
+}
+
+
+
+
+
+
 export default profileReducer;

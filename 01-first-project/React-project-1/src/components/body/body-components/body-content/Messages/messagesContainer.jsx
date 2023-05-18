@@ -5,12 +5,20 @@ import { chengeTextMessageActionCreator } from '../../../../../redux/dialogsRedu
 import { connect } from 'react-redux';
 
 
+import { withAuthRedirect } from '../../../../../hoc/withAuthRedirect.tsx';
+
+
+
+let AuthRedirectComponent = withAuthRedirect(Messages)
+
+
+
+
 
 
 let mapStateToProps = (state) => {
     return {
         state: state.messagesPage,
-        isAuth: state.auth.isAuth
     }
 };
 let mapDispatchToProps = (dispatch) => {
@@ -23,7 +31,12 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const MessagesContainer = connect(mapStateToProps,mapDispatchToProps)(Messages)
+
+
+
+
+
+const MessagesContainer = connect(mapStateToProps,mapDispatchToProps)(AuthRedirectComponent)
 
 export default MessagesContainer;
 
@@ -36,23 +49,3 @@ export default MessagesContainer;
 
 
 
-// const MessagesContainer = (props) => {
-//     return (
-//         <StoreContext.Consumer>
-//             {(store) => {
-//                 let state = store.getState().messagesPage;
-//                 let sendMessage = (text) => {
-//                     store.dispatch(addMessageActionCreator(text));
-//                 };
-//                 let changeTextMessage = (text) => {
-//                     let action = chengeTextMessageActionCreator(text);
-//                     store.dispatch(action);
-//                 };
-//                 return (
-//                     <Messages state={state} sendMessage={sendMessage} changeTextMessage={changeTextMessage} />
-//                 )
-//             }
-//             }
-//         </StoreContext.Consumer>
-//     );
-// };
