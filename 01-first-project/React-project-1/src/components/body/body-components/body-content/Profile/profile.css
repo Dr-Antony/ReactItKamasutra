@@ -34,13 +34,27 @@
     border: 5px solid rgb(156, 157, 255);
 }
 
-.user__name {
+.user__name_and_status {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
     margin-top: 1%;
     margin-right: 30%;
-    font-size: x-large;
     color: ivory;
+}
+
+.user__name {
+    font-size: x-large;
+}
+
+.user__status {
+    display: flex;
+    justify-content: center;
+    min-width: 200px;
+    margin-top: 1em;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 5px;
 }
 
 .profile__posts {
