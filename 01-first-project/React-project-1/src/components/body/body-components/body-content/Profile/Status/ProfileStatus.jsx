@@ -9,26 +9,35 @@ import Preloader from '../../../../../common/preloader/preloader';
 
 class ProfileStatus extends React.Component {
     state = {
-        editMode: false
+        editMode: false,
+        status: this.props.status
     }
-
-
-    activatedEditMode = () => {
-        console.log(this.state.editMode)
+    activatedEditMode =  () => {
         this.setState({ editMode: true })
-        console.log(this.state.editMode)
     }
     deactivatedEditMode = () => {
-        console.log(this.state.editMode)
         this.setState({ editMode: false })
-        console.log(this.state.editMode)
+        this.props.updateStatus(this.state.status)
     }
-
+    onStatusChange = (e)=> {
+        this.setState(
+            {
+                status: e.currentTarget.value
+            }
+        )
+    };
+    componentDidUpdate(prevProps,prevState){
+        if (prevProps.status !== this.props.status) {
+            this.setState({status: this.props.status})
+        };
+        debugger
+        console.log('update')
+    }
 
     render() {
         return (
             <div>
-                {!this.state.editMode ? <div><button onClick={this.activatedEditMode.bind(this)}>{this.props.status}</button></div> : <div><input autoFocus={true} onBlur={this.deactivatedEditMode.bind(this)} value={this.props.status} /></div>}
+                {!this.state.editMode ? <div><button onClick={this.activatedEditMode}>{this.state.status ? this.state.status : `Тут статус`}</button></div> : <div><input  autoFocus={true} onBlur={this.deactivatedEditMode} onChange={this.onStatusChange} value={this.state.status ? this.state.status : `Тут статус`} /></div>}
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from './profile.jsx';
 import { connect } from "react-redux";
-import { setUserProfile, getProfileApiTC } from './../../../../../redux/profileReducer';
+import { setUserProfile, getProfileApiTC,getStatusApiTC,updateStatusApiTC } from './../../../../../redux/profileReducer';
 import { withAuthRedirect } from "../../../../../hoc/withAuthRedirect.tsx";
 import {
     useLocation,
@@ -40,10 +40,11 @@ class ProfileContainer extends React.Component {
         let userId = this.props.router.params.userId;
         if (!userId) { userId = 28998; }
         this.props.getProfileApiTC(userId)
+        this.props.getStatusApiTC(userId)
     }
     render() {
         return (
-            <Profile profile={this.props.profile} {...this.props} />
+            <Profile profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatusApiTC} {...this.props} />
         )
     }
 }
@@ -51,11 +52,12 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
+        status: state.profilePage.status
     };
 }
 
 
 export default compose(
-    connect(mapStateToProps, { setUserProfile, getProfileApiTC }),
+    connect(mapStateToProps, { setUserProfile, getProfileApiTC,getStatusApiTC,updateStatusApiTC }),
     withRouter,
     withAuthRedirect)(ProfileContainer);
