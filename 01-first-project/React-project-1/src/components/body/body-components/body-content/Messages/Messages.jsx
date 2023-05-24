@@ -5,6 +5,29 @@ import MessageItem from './MessageItem/MessageItem';
 
 import { Navigate } from "react-router-dom";
 
+import { Field, reduxForm } from "redux-form";
+
+
+
+class DialogForm extends React.Component {
+    render(){
+    return (
+        <form onSubmit={this.props.handleSubmit} className={style.dialog__window_send}>
+                <div>
+                    <Field className={style.textArea} component={"textarea"} name={"messageText"} placeholder={"EnterYour message"}/>
+                </div>
+                <div>
+                    <button className={style.button}>Send</button>
+                </div>
+            </form>
+        )
+    }
+};
+
+
+const ReduxDialogsForm = reduxForm({
+    form: 'dialogs'
+})(DialogForm)
 
 
 
@@ -26,20 +49,46 @@ class Messages extends React.Component  {
     })
     )
 }
+
+
+//Это было по старому (Оставил как наглядный пример логики исполнения процесса)
+
+
+// ......................................................................
     newMessage = React.createRef();
     onSendMessage = () => {
         let text = this.newMessage.current.value;
         this.props.sendMessage(text);
     };
-    
     changeText = () => {
         let text = this.newMessage.current.value;
-        this.props.changeTextMessage(text);
+        this.props.chengeTextMessageActionCreator(text);
     };
+// ......................................................................
+
+
+
+
+
+
+
+
+
+
+    onSubmit = (data)=> {
+        this.props.addMessageActionCreator(data.messageText);
+        data.messageText= "";
+    }
+
+
+
+
+
+
 render(){
     if(!this.props.isAuth){
         return <Navigate to={'/login'}/>
-    }
+    } 
     return (
         
         <div className={style.messages}>
@@ -53,10 +102,7 @@ render(){
                 <div className={style.dialog__window_msgs}>
                 {this.mesagesElements()}
             </div>
-            <div className={style.dialog__window_send}>
-                <div><textarea className={style.textArea} onChange={this.changeText} ref={this.newMessage} value={this.props.state.newText}></textarea></div>
-                <div><button onClick={this.onSendMessage} className={style.button}>Send</button></div>
-                </div>
+            <ReduxDialogsForm onSubmit={this.onSubmit}/>
                 </div>
             </div>
         </div>

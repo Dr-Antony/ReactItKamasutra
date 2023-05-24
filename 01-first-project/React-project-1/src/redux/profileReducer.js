@@ -13,7 +13,6 @@ let initialState = {
         { message: 'Hello it my first pussy', likeCount: 5 },
         { message: 'I liked your ass', likeCount: 112 }
     ],
-    newText: '',
     profile: null,
     status: 'Это какой-то статус иди нахуй'
 };
@@ -22,9 +21,6 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             return { ...state, postsData: [...state.postsData, { message: action.textOfNewPost, likeCount: 0 }], newText: '' };;
-        }
-        case UPDATE_TEXT_OF_POST: {
-            return { ...state, newText: action.updateText };
         }
         case SET_USER_PROFILE: {
             return { ...state, profile: action.profile };

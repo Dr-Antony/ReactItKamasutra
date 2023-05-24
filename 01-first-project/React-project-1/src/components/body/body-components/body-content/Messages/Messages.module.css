@@ -92,4 +92,10 @@
     display: inline-block;
     font-size: 16px;
     flex-basis: 20%;
+    transition: all .4s;
+}
+.button:hover {
+    transform: scale(1.02);
+    border-radius: 4px;
+    transition: all .4s;
 }

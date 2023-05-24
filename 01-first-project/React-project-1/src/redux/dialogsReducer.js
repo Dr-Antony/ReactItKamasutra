@@ -52,9 +52,13 @@ const dialogsReducer = (state = initialState, action) => {
         case ADD_MESSAGE: {
             return { ...state, messagesData: [...state.messagesData, { message: action.textOfNewMessage }], newText: '' };
         }
-        case UPDATE_TEXT_OF_MESSAGE: {
-            return { ...state, newText: action.updateText };
-        }
+
+        // Оставил чтоб в случае чего вспомнить логику выполнения
+        // case UPDATE_TEXT_OF_MESSAGE: {
+        //     return { ...state, newText: action.updateText };
+        // }
+
+
     };
     return state;
 };
@@ -62,6 +66,10 @@ const dialogsReducer = (state = initialState, action) => {
 export const addMessageActionCreator = (text) => {
     return { type: ADD_MESSAGE, textOfNewMessage: text }
 };
+
+
+
+// Оставил чтоб в случае чего вспомнить логику выполнения
 export const chengeTextMessageActionCreator = (text) => {
     return { type: UPDATE_TEXT_OF_MESSAGE, updateText: text }
 };
