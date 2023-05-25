@@ -6,15 +6,15 @@ import MessageItem from './MessageItem/MessageItem';
 import { Navigate } from "react-router-dom";
 
 import { Field, reduxForm } from "redux-form";
-
-
+import { Textarea } from '../../../../common/FormsControl/FormsControl';
+import { required, maxLengthCreator } from '../../../../../utils/validators/validators';
 
 class DialogForm extends React.Component {
     render(){
     return (
         <form onSubmit={this.props.handleSubmit} className={style.dialog__window_send}>
                 <div>
-                    <Field className={style.textArea} component={"textarea"} name={"messageText"} placeholder={"EnterYour message"}/>
+                    <Field className={style.textArea} component={Textarea} validate={[required , maxLengthCreator(100)]} name={"messageText"} placeholder={"EnterYour message"}/>
                 </div>
                 <div>
                     <button className={style.button}>Send</button>

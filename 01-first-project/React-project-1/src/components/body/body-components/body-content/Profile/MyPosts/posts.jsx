@@ -2,15 +2,19 @@ import React from 'react';
 import style from './posts.module.css'
 import Post from './post/post';
 
+
+
 import { Field, reduxForm } from "redux-form";
+import { required, maxLengthCreator } from '../../../../../../utils/validators/validators';
+import { Textarea } from '../../../../../common/FormsControl/FormsControl';
 
 class PostsForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.props.handleSubmit} className={style.input}>
-                <Field className={style.text__area} name={"textOfPost"} component={"input"}></Field>
+                <Field className={style.text__area}  name={"textOfPost"} component={Textarea} validate={[required , maxLengthCreator(15)]}></Field>
                 <div className={style.btn}>
-                    <button className={style.button__add} >Add Post</button>
+                    <button  className={style.button__add} >Add Post</button>
                     <button className={style.button__remove}>Remove Post</button>
                 </div>
             </form>

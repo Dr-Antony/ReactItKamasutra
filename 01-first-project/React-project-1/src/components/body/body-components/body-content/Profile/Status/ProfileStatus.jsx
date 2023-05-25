@@ -37,7 +37,7 @@ class ProfileStatus extends React.Component {
     render() {
         return (
             <div>
-                {!this.state.editMode ? <div><button onClick={this.activatedEditMode}>{this.state.status ? this.state.status : `Тут статус`}</button></div> : <div><input  autoFocus={true} onBlur={this.deactivatedEditMode} onChange={this.onStatusChange} value={this.state.status ? this.state.status : `Тут статус`} /></div>}
+                {!this.state.editMode ? <div className={style.button}><button onClick={this.activatedEditMode}>{this.state.status ? this.state.status : `Тут статус`}</button></div> : <div className={style.input}><input  autoFocus={true} onBlur={this.deactivatedEditMode} onChange={this.onStatusChange} value={this.state.status ? this.state.status : `Тут статус`} /></div>}
             </div>
         )
     }
