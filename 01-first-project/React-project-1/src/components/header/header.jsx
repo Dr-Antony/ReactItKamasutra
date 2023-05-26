@@ -8,7 +8,7 @@ import Preloader from '../common/preloader/preloader';
 
 
 const Header = (props) => {
-    
+    debugger
     return (
         <header className='header'>
             <div className='header__logo'><img src={logo} /></div>
@@ -18,10 +18,14 @@ const Header = (props) => {
                     {props.isFetching && !props.isAuth ? <Preloader /> : null}
                         {
                             props.isAuth ?
+                            <div className='header__auth-y-container'>
                                 <NavLink to={'/Profile/'} className='header__auth-y'>
                                     <div className='auth__img'><NavLink to={'/Profile/'}><img src={home2} /></NavLink></div>
                                     <div className='auth__login'><NavLink to={'/Profile/'}>{props.login}</NavLink></div>
+                                    
                                 </NavLink>
+                                <div><button onClick={props.logoutTC}  className='header__auth-y-logout'>logout</button></div>
+                            </div>
                                 :
                                 <div className='header__auth-n'>
                                     <div className='auth__login'><NavLink className='auth__btn' to={'/login'}>Login</NavLink></div>

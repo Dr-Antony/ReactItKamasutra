@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: 1em;
+    font-weight: 700;
 }
 
 .header__logo {
@@ -52,8 +53,30 @@
 }
 
 
+.header__auth-y-container{
+    display: flex;
+    align-items: center;
+}
 
 
+
+.header__auth-y-logout{
+    font-size:small;
+    font-weight: 700;
+    color:white ;
+    background:transparent ;
+    border: 2px solid rgb(118, 131, 156);
+    border-radius: 4px;
+    padding: 13px;
+    margin-left: 5px;
+    transition: all .5s;
+}
+.header__auth-y-logout:hover{
+    transition: all .5s;
+    background: red;
+    border: 2px solid red;
+    color: black;
+}
 .header__auth-y{
     display: flex;
     justify-content: space-between;
@@ -63,6 +86,8 @@
     padding: 10px;
     transition: all .5s;
 }
+
+
 
 .auth__img img{
     width: 25px ;
@@ -96,8 +121,6 @@ margin-right: 5px;
 
 }
 .auth__registration{
-
-
 }
 .auth__btn{
     color: white;
