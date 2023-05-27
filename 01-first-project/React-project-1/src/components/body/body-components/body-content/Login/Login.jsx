@@ -11,12 +11,14 @@ import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const LoginForm = (props) => {
+    debugger
     return (
-        <form onSubmit={props.handleSubmit} className={style.login__container}>
-            <div className={style.login__login}>
+        <form onSubmit={props.handleSubmit} className={ style.login__container }>
+            {props.error? <div className={style.error_error}><span>{props.error}</span></div>: null}
+            <div className={!props.invalidData ? style.login__login : (style.login__login + ' ' + style.error )}>
                 <Field placeholder="Email" name={"email"} component={Input} validate={[required, maxLengthCreator(30)]} />
             </div>
-            <div className={style.login__password}>
+            <div className={!props.invalidData ? style.login__password : (style.login__password + ' ' + style.error )}>
                 <Field placeholder="Password" name={"password"} component={Input} validate={[required, maxLengthCreator(30)]} />
             </div>
             <div className={style.login__checkbox}>
@@ -34,11 +36,10 @@ const ReduxLoginForm = reduxForm({
 })(LoginForm)
 
 const Login = (props) => {
+
     const onSubmit = async (formData) => {
         let { email, password, rememberMe } = formData;
-        await console.log(formData);
         await props.loginTC(email, password, rememberMe);
-        await console.log(formData);
     }
 
     if (props.isAuth) {
@@ -46,14 +47,15 @@ const Login = (props) => {
     }
     return (
         <div className={style.login__wrapper}>
-            <ReduxLoginForm onSubmit={onSubmit} />
+            <ReduxLoginForm onSubmit={onSubmit} invalidData={props.invalidData} />
         </div>
     )
 }
 
 let mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        invalidData: state.auth.invalidData
     }
 };
 

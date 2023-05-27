@@ -1,15 +1,20 @@
 import { headerAPI } from "../api/apiOfHeader";
 import { authorizeAPI } from "../api/apiOfLogin";
 
+import { stopSubmit } from "redux-form";
+
+
 const SET_USER_DATA = 'SET-USER-DATA';
 const FETCHING = 'FETCHING';
+const INVALID = 'INVALID';
 
 let initialState = {
     id: null,
     email: null,
     login: null,
     isAuth: false,
-    isFetching: null
+    isFetching: null,
+    invalidData: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -18,11 +23,12 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.data,
-                // isAuth: true
             };
         }
         case FETCHING:
             return { ...state, isFetching: action.isFetching }
+        case INVALID:
+            return {...state , invalidData: action.invalidData }
     };
     return state;
 };
@@ -33,6 +39,10 @@ export const setAuthUserData = (id, email, login, isAuth) => {
 export const setFetching = (isFetching) => {
     return { type: FETCHING, isFetching }
 }
+export const setInvalidData = (invalidData) => {
+    return { type: INVALID, invalidData }
+}
+
 
 
 export const getMyDataTC = () => {
@@ -55,6 +65,11 @@ export const loginTC = (email,password,rememberMe) => {
         .then((response)=> {
             if(response.data.resultCode === 0) {
                 dispatch(getMyDataTC())
+                dispatch(setInvalidData(false))
+            }
+            if(response.data.resultCode === 1) {
+                dispatch(setInvalidData(true));
+                dispatch(stopSubmit("login",{_error:response.data.messages[0] }))
             }
         })
     }

@@ -19,6 +19,27 @@
 .login__login {
     padding: 5px;
 }
+.login__login.error input {
+    transition: all .3s;
+    box-shadow: 0px 8px 51px -1px rgba(255, 159, 159, 0.42);
+}
+.login__login.error::after {
+    color: white;
+    position: absolute;
+    transition: all 1s;
+    content: "You entered invalid data!";
+    width: auto;
+    height: auto;
+    transform: translate(10em 10em);
+    border:solid red 1px;
+    border-radius: 4px;
+    left: 52.5%;
+    background: no-repeat;
+    top: 36%;
+    padding: 5px 15px;
+    
+}
+
 
 .login__login input {
     border-radius: 2px;
@@ -31,7 +52,10 @@
 .login__password {
     padding: 5px;
 }
-
+.login__password.error input {
+    transition: all .3s;
+    box-shadow: 0px 8px 51px -1px rgba(255, 159, 159, 0.42);
+}
 .login__password input {
     border-radius: 2px;
     width: 100%;
@@ -70,3 +94,30 @@
     cursor: pointer;
     transition: all .4s;
 }
+
+
+
+
+
+.error_error {
+    color:red;
+    transform: translateY(-55px);
+    animation-name: errorr;
+}
+
+
+@keyframes errorr {
+    0% {
+        opacity: 0;
+        transform: translateX(100px)
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(50px)
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px)
+}
+}
+
