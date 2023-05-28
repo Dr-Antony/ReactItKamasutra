@@ -48,7 +48,7 @@ export const setInvalidData = (invalidData) => {
 export const getMyDataTC = () => {
     return (dispatch) => {
         dispatch(setFetching(true))
-        headerAPI.getMyData()
+        return headerAPI.getMyData()
             .then(data => {
                 dispatch(setFetching(false))
                 let { id, email, login } = data.data;
@@ -56,6 +56,7 @@ export const getMyDataTC = () => {
                     dispatch(setAuthUserData(id, email, login,true))
                 }
             })
+            .then(()=>{return true})
     }
 }
 

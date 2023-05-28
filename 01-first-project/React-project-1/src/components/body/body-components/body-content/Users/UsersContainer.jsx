@@ -4,7 +4,7 @@ import { setUsers, setPage, setFollowingProgress, getUsersTC, followTC, unfollow
 import React from "react";
 import Users from './Users'
 import Preloader from "../../../../common/preloader/preloader";
-
+import { takeCurrentPage, takeFollowingProgress, takeIsFetching, takePageSize, takeState, takeTotalUsersCount } from "../../../../../redux/Selectors/usersSelectors";
 
 
 
@@ -60,12 +60,12 @@ class UsersAPI extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        state: state.usersPage,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingProgress: state.usersPage.followingProgress
+        state: takeState(state),
+        pageSize: takePageSize(state),
+        totalUsersCount: takeTotalUsersCount(state),
+        currentPage: takeCurrentPage(state),
+        isFetching: takeIsFetching(state),
+        followingProgress: takeFollowingProgress(state)
     };
 };
 

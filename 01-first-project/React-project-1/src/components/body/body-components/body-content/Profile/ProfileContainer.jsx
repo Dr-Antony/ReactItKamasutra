@@ -43,6 +43,9 @@ class ProfileContainer extends React.Component {
         if (!userId && this.props.isAuth) {
             userId = this.props.authorizedUserId;
         }
+        if (!userId && !this.props.isAuth) {
+            <Navigate to={'/login'}/>
+        }
         this.props.getProfileApiTC(userId)
         this.props.getStatusApiTC(userId)
     }
