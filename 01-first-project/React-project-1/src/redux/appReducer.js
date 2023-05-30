@@ -28,7 +28,6 @@ export const setInitialized = () => {
 export const initializeApp = () => {
     return (dispatch) => {
         let promis = dispatch(getMyDataTC())
-        debugger
         promis.then(()=>{dispatch(setInitialized())})
     }
 }

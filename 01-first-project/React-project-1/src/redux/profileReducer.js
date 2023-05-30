@@ -61,8 +61,10 @@ export const getProfileApiTC = (userId) => {
     }
 }
 export const getStatusApiTC = (userId) => {
+    
     return (dispatch) => {
         profileAPI.getStatus(userId).then((statusText) => {
+            debugger
             dispatch(getUserStatus(statusText))
         })
     }

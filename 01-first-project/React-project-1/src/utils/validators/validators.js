@@ -1,5 +1,4 @@
 export const required = value => {
-    debugger
     if(value) {
         return undefined;
     };
@@ -14,7 +13,6 @@ export const required = value => {
 // }
 
 export const maxLengthCreator = (maxLength) => (value) => {
-    debugger
     if(value && value.length > maxLength) {
         return `Maximal count symbols cant will be more ${maxLength}`
     }
