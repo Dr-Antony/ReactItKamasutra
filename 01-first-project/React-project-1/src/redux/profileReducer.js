@@ -14,7 +14,7 @@ let initialState = {
         { message: 'I liked your ass', likeCount: 112 }
     ],
     profile: null,
-    status: 'Это какой-то статус иди нахуй'
+    status: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -56,6 +56,7 @@ export const updateStatus = (statusText) => {
 export const getProfileApiTC = (userId) => {
     return (dispatch) => {
         profileAPI.getProfile(userId).then((data) => {
+            debugger
             dispatch(setUserProfile(data))
         })
     }
@@ -66,6 +67,7 @@ export const getStatusApiTC = (userId) => {
         profileAPI.getStatus(userId).then((statusText) => {
             debugger
             dispatch(getUserStatus(statusText))
+            
         })
     }
 }

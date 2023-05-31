@@ -6,7 +6,8 @@ import Preloader from '../../../../../common/preloader/preloader';
 
 
 
-let ProfileStatusWithHooks = (props) => {
+let ProfileStatusWithHooks = React.memo((props) => {
+    console.log('render')
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status)
     debugger
@@ -16,6 +17,7 @@ let ProfileStatusWithHooks = (props) => {
         setStatus(status);
     }, [props.status]);
     ////////////////////
+    
     let activatedEditMode = () => {
         setEditMode(true)
     }
@@ -28,6 +30,7 @@ let ProfileStatusWithHooks = (props) => {
     const onStatusChange = (e) => {
         setStatus(e.currentTarget.value)
     };
+
     ////////////////
 
     return (
@@ -36,5 +39,5 @@ let ProfileStatusWithHooks = (props) => {
             {editMode && <div className={style.input}><input onChange={onStatusChange} onBlur={deactivatedEditMode} autoFocus={true} value={status} /></div>}
         </div>
     )
-}
+})
 export default ProfileStatusWithHooks;

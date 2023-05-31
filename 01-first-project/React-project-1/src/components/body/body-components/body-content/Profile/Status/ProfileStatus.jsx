@@ -7,7 +7,7 @@ import Preloader from '../../../../../common/preloader/preloader';
 
 
 
-class ProfileStatus extends React.Component {
+class ProfileStatus extends React.PureComponent {
     state = {
         editMode: false,
         status: this.props.status
@@ -30,11 +30,10 @@ class ProfileStatus extends React.Component {
         if (prevProps.status !== this.props.status) {
             this.setState({status: this.props.status})
         };
-        debugger
-        console.log('update')
     }
 
     render() {
+        console.log('render')
         return (
             <div>
                 {!this.state.editMode ? <div className={style.button}><button onClick={this.activatedEditMode}>{this.state.status ? this.state.status : `Тут статус`}</button></div> : <div className={style.input}><input  autoFocus={true} onBlur={this.deactivatedEditMode} onChange={this.onStatusChange} value={this.state.status ? this.state.status : `Тут статус`} /></div>}

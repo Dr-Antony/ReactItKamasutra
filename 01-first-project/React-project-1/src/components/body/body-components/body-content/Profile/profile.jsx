@@ -10,7 +10,7 @@ import ProfileStatusWithHooks from './Status/ProfileStatusWithHooks';
 import PostsContainer from './MyPosts/postsContainer';
 import Preloader from '../../../../common/preloader/preloader';
 
-const Profile = (props) => {
+const Profile = React.memo( (props) => {
     if (!props.profile) {
         <Preloader />
     } else {
@@ -30,6 +30,6 @@ const Profile = (props) => {
             </div>
         );
     };
-}
+})
 export default Profile;
 

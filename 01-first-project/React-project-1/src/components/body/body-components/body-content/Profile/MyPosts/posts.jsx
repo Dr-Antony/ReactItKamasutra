@@ -10,6 +10,7 @@ import { Textarea } from '../../../../../common/FormsControl/FormsControl';
 
 class PostsForm extends React.Component {
     render() {
+        
         return (
             <form onSubmit={this.props.handleSubmit} className={style.input}>
                 <Field className={style.text__area}  name={"textOfPost"} component={Textarea} validate={[required , maxLengthCreator(15)]}></Field>
@@ -32,6 +33,19 @@ const ReduxPostsForm = reduxForm({
 
 
 class Posts extends React.Component {
+
+
+
+    
+    shouldComponentUpdate(nextProps,nextState){
+        return nextProps != this.props || nextState != this.state
+    }
+
+
+
+
+
+
     allPosts = () => {
         return (
             this.props.postsData.map((p) => {
