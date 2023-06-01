@@ -6,12 +6,12 @@ const UPDATE_TEXT_OF_POST = 'UPDATE-TEXT-OF-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const GET_USER_STATUS = 'SET-USER-STATUS';
 const SET_MY_STATUS = 'SET-MY-STATUS';
-
+const DELETE_POST = 'DELETE-POST'
 
 let initialState = {
     postsData: [
-        { message: 'Hello it my first pussy', likeCount: 5 },
-        { message: 'I liked your ass', likeCount: 112 }
+        { message: 'Hello it my first pussy', likeCount: 5, postId: 1 },
+        { message: 'I liked your ass', likeCount: 112, postId: 2 }
     ],
     profile: null,
     status: null
@@ -31,6 +31,9 @@ const profileReducer = (state = initialState, action) => {
         case SET_MY_STATUS: {
             return { ...state, status: action.status }
         }
+        case DELETE_POST: {
+            return { ...state, postsData: state.postsData.filter(p=>p.postId != action.postId) }
+        }
     };
     return state;
 };
@@ -49,6 +52,9 @@ export const getUserStatus = (statusText) => {
 };
 export const updateStatus = (statusText) => {
     return { type: SET_MY_STATUS, statusText }
+};
+export const deletePost = (postId) => {
+    return { type: DELETE_POST, postId }
 };
 
 
