@@ -22,7 +22,7 @@ class UsersAPI extends React.Component {
         this.props.setPage(pageNumber)
         this.props.getUsersTC(pageNumber, this.props.pageSize)
     }
-    unfollowUsr = async (usrId) => {
+    unfollowUsr =  (usrId) => {
         this.props.unfollowTC(usrId)
     }
     followUsr = (usrId) => {

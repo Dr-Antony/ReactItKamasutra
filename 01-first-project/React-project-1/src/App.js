@@ -5,25 +5,34 @@ import Header from './components/header/header';
 import Body from './components/body/body';
 import Footer from './components/footer/footer';
 import HeaderContainer from './components/header/headerContainer';
-import {BrowserRouter,} from "react-router-dom";
-
 
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className='wrapper'>
-        <div className='container'>
-          <HeaderContainer />
-          <Body  />
-          <Footer />
-        </div>
+    <div className='wrapper'>
+      <div className='container'>
+        <HeaderContainer />
+        <Body />
+        <Footer />
       </div>
-    </BrowserRouter>
+    </div>
   );
 };
 
-export default App;
+
+const MainApp = (props)=> {
+  return (
+    <div className='wrapper'>
+      <div className='container'>
+        <HeaderContainer />
+        <Body />
+        <Footer />
+      </div>
+    </div>
+  );
+};
+
+export default MainApp;
 
 
 

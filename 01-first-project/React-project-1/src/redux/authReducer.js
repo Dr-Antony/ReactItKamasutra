@@ -28,13 +28,13 @@ const authReducer = (state = initialState, action) => {
         case FETCHING:
             return { ...state, isFetching: action.isFetching }
         case INVALID:
-            return {...state , invalidData: action.invalidData }
+            return { ...state, invalidData: action.invalidData }
     };
     return state;
 };
 
 export const setAuthUserData = (id, email, login, isAuth) => {
-    return { type: SET_USER_DATA, data: { id, email, login,isAuth } }
+    return { type: SET_USER_DATA, data: { id, email, login, isAuth } }
 };
 export const setFetching = (isFetching) => {
     return { type: FETCHING, isFetching }
@@ -46,43 +46,37 @@ export const setInvalidData = (invalidData) => {
 
 
 export const getMyDataTC = () => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setFetching(true))
-        return headerAPI.getMyData()
-            .then(data => {
-                dispatch(setFetching(false))
-                let { id, email, login } = data.data;
-                if (data.resultCode === 0) {
-                    dispatch(setAuthUserData(id, email, login,true))
-                }
-            })
-            .then(()=>{return true})
+        const data = await headerAPI.getMyData();
+        dispatch(setFetching(false));
+        let { id, email, login } = data.data;
+        if (data.resultCode === 0) {
+            dispatch(setAuthUserData(id, email, login, true));
+        }
+        return true;
     }
 }
 
-export const loginTC = (email,password,rememberMe) => {
-    return (dispatch) => {
-        authorizeAPI.login(email,password,rememberMe)
-        .then((response)=> {
-            if(response.data.resultCode === 0) {
-                dispatch(getMyDataTC())
-                dispatch(setInvalidData(false))
-            }
-            if(response.data.resultCode === 1) {
-                dispatch(setInvalidData(true));
-                dispatch(stopSubmit("login",{_error:response.data.messages[0] }))
-            }
-        })
+export const loginTC = (email, password, rememberMe) => {
+    return async (dispatch) => {
+        let response = await authorizeAPI.login(email, password, rememberMe)
+        if (response.data.resultCode === 0) {
+            dispatch(getMyDataTC())
+            dispatch(setInvalidData(false))
+        }
+        if (response.data.resultCode === 1) {
+            dispatch(setInvalidData(true));
+            dispatch(stopSubmit("login", { _error: response.data.messages[0] }))
+        }
     }
 }
 export const logoutTC = () => {
-    return (dispatch) => {
-        authorizeAPI.logout()
-        .then((response)=> {
-            if(response.data.resultCode === 0) {
-                dispatch(setAuthUserData(null, null, null,false))
-            }
-        })
+    return async (dispatch) => {
+        let response = await authorizeAPI.logout()
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null, false))
+        }
     }
 }
 

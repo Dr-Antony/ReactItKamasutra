@@ -1,16 +1,16 @@
 
 
 .wrapper {
-  background-color: rgb(189, 228, 238);
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   position: relative;
-  height: 100%;
-  width: 100%;
 }
 
 .container {
   width: 1200px;
+  height: 100%;
 }
 
 .button {

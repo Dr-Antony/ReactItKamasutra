@@ -10,21 +10,18 @@ let ProfileStatusWithHooks = React.memo((props) => {
     console.log('render')
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status)
-    debugger
     ////////////////////
     useEffect(() => {
-        debugger
         setStatus(status);
     }, [props.status]);
     ////////////////////
-    
+
     let activatedEditMode = () => {
         setEditMode(true)
     }
     let deactivatedEditMode = () => {
         setEditMode(false)
-        debugger
-        props.updateStatus(status)
+        props.updateStatus(status,props.userId)
     }
     ////////////////////
     const onStatusChange = (e) => {

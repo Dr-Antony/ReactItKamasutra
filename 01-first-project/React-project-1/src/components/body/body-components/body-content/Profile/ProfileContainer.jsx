@@ -39,6 +39,7 @@ class ProfileContainer extends React.Component {
     }
     componentDidMount() {
         let userId = this.props.router.params.userId;
+        debugger
         if (!userId && this.props.isAuth) {
             userId = this.props.authorizedUserId;
         }
@@ -47,6 +48,9 @@ class ProfileContainer extends React.Component {
         }
         this.props.getProfileApiTC(userId)
         this.props.getStatusApiTC(userId)
+    }
+    componentDidUpdate(){
+
     }
     render() {
         return (

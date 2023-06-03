@@ -4,7 +4,6 @@ import style from './Users.module.css';
 
 let Users = (props) => {
     let allUsers = () => {
-        
         return (
             
             props.state.users.map((user) => {

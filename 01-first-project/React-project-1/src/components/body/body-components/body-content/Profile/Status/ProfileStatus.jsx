@@ -1,8 +1,6 @@
 import React from 'react';
 import style from './ProfileStatus.module.css';
 
-import Preloader from '../../../../../common/preloader/preloader';
-
 
 
 
@@ -26,7 +24,7 @@ class ProfileStatus extends React.PureComponent {
             }
         )
     };
-    componentDidUpdate(prevProps,prevState){
+    componentDidUpdate(prevProps){
         if (prevProps.status !== this.props.status) {
             this.setState({status: this.props.status})
         };
@@ -36,7 +34,8 @@ class ProfileStatus extends React.PureComponent {
         console.log('render')
         return (
             <div>
-                {!this.state.editMode ? <div className={style.button}><button onClick={this.activatedEditMode}>{this.state.status ? this.state.status : `Тут статус`}</button></div> : <div className={style.input}><input  autoFocus={true} onBlur={this.deactivatedEditMode} onChange={this.onStatusChange} value={this.state.status ? this.state.status : `Тут статус`} /></div>}
+                {!this.state.editMode ? 
+                <div className={style.button}><button onClick={this.activatedEditMode}>{this.state.status ? this.state.status : `Тут статус`}</button></div> : <div className={style.input}><input  autoFocus={true} onBlur={this.deactivatedEditMode} onChange={this.onStatusChange} value={this.state.status ? this.state.status : `Тут статус`} /></div>}
             </div>
         )
     }

@@ -16,6 +16,7 @@
 }
 
 .header__logo img {
+    border-radius: 50%;
     width: 90px;
     height: 90px;
     border: 10px solid;
