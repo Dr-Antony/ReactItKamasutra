@@ -1,6 +1,7 @@
 import React from "react";
 import UserItem from "./UserItem/UserItem";
 import style from './Users.module.css';
+import { useState } from "react";
 
 let Users = (props) => {
     let allUsers = () => {
@@ -12,16 +13,41 @@ let Users = (props) => {
         )
     };
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    for (let i = 1; i <= pagesCount && i < 11; i++) {
-        pages.push(i);
+    let [pages,setPages] = useState([1,2,3,4,5])
+    
+    let nextPages = ()=>{
+        let nextPages = []
+        let right = pages[pages.length-1]
+        for (let i = right; i <= pagesCount && i < right + 5 ; i++) {
+            nextPages.push(i)
+        }
+        console.log(nextPages)
+        setPages([...nextPages])
+    }
+    let beforePages =  ()=> {
+        let nextPages = []
+        let left = pages[0]
+        if (left<=5) {
+            left = 6
+        }
+        for (let i = left - 5; i <= pagesCount && i < left ; i++) {
+            nextPages.push(i)
+        }
+        console.log(nextPages)
+        setPages([...nextPages])
     }
     return (
         <div className={style.users__wrapper}>
             <div className={style.users__container}>
+            <div className={style.users__button_paginator}>
+            <button onClick={beforePages}>Назад</button>
+            </div>
                 {pages.map((p) => {
                     return (<button className={props.currentPage === p ? style.selected_page : style.unselected_page} onClick={(e) => { props.pageChange(p) }}>{p}</button>)
                 })}
+                <div className={style.users__button_paginator}>
+                    <button onClick={nextPages}>Вперёд</button>
+                </div>
             </div>
             {allUsers()}
         </div>
@@ -39,3 +65,61 @@ export default Users;
 
 
 // return (<button className={this.props.currentPage === { p } ? style.selected_page : style.unselected_page} onClick={(e) => { this.pageChange(p) }}>{p}</button>)
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from "react";
+// import UserItem from "./UserItem/UserItem";
+// import style from './Users.module.css';
+
+// let Users = (props) => {
+//     let allUsers = () => {
+//         return (
+            
+//             props.state.users.map((user) => {
+//                 return (<UserItem id={user.id} followed={user.followed} key={user.id} photo={user.photos} name={user.name} followingProgress={props.followingProgress} functions={props} />)
+//             })
+//         )
+//     };
+//     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    
+//     let pages = [];
+//     for (let i = 1; i <= pagesCount && i < 10; i++) {
+//         pages.push(i);
+//     }
+//     let nextPages = ()=>{
+//         let nextPages = []
+//         for (let i = pages.length; i <= pagesCount && i < pages.length + 10 ; i++) {
+//             nextPages.push(i)
+//         }
+//         pages = nextPages;
+//     }
+//     return (
+//         <div className={style.users__wrapper}>
+//             <div className={style.users__container}>
+//                 {pages.map((p) => {
+//                     return (<button className={props.currentPage === p ? style.selected_page : style.unselected_page} onClick={(e) => { props.pageChange(p) }}>{p}</button>)
+//                 })}
+//                 <div className={style.users__button_paginator}>
+//                     <button onClick={nextPages}>next</button>
+//                 </div>
+//             </div>
+//             {allUsers()}
+//         </div>
+//     )
+// }
+
+
+// export default Users;
+
+
+

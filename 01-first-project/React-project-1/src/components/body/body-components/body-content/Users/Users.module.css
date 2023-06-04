@@ -29,7 +29,29 @@
     display: flex;
     justify-content: space-around;
 }
-
+.users__button_paginator{
+    display: flex;
+    align-items: center;
+}
+.users__button_paginator button{
+    font-size: small;
+    font-weight: 700;
+    color: white;
+    background: transparent;
+    border: 2px solid rgb(118, 131, 156);
+    border-radius: 4px;
+    padding: 15px 32px;
+    margin-left: 5px;
+    transition: all .5s;
+}
+.users__button_paginator button:first-child{
+    margin-right: 5px;
+}
+.users__button_paginator button:hover{
+    background: #4CAF50;
+    border: 2px solid #4CAF50;
+    transition: all .3s;
+}
 .users__wrapper {
     display: flex;
     flex-direction: column;
