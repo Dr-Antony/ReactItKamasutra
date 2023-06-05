@@ -72,10 +72,11 @@ export const getStatusApiTC = (userId) => {
     }
 }
 
-export const updateStatusApiTC = (status,userId) => {
+export const updateStatusApiTC = (status, userId) => {
     return async (dispatch) => {
         let response = await profileAPI.updateStatus(status);
         if (response.data.resultCode === 0) {
+            debugger
             dispatch(updateStatus(status))
         }
         let statusText = await profileAPI.getStatus(userId);

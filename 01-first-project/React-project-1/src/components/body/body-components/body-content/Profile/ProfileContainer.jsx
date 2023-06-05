@@ -37,9 +37,8 @@ class ProfileContainer extends React.Component {
     constructor(props) {
         super(props)
     }
-    componentDidMount() {
+    refreshComponent = ()=>{
         let userId = this.props.router.params.userId;
-        debugger
         if (!userId && this.props.isAuth) {
             userId = this.props.authorizedUserId;
         }
@@ -49,9 +48,15 @@ class ProfileContainer extends React.Component {
         this.props.getProfileApiTC(userId)
         this.props.getStatusApiTC(userId)
     }
-    componentDidUpdate(){
-
+    componentDidMount() {
+        this.refreshComponent()
     }
+    // componentDidUpdate(prevProps,prevState) {
+    //     debugger
+    //     if (this.props.router.params.userId != prevProps.router.params.userId ) {
+    //         this.refreshComponent()
+    //     }
+    // }
     render() {
         return (
             <Profile profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatusApiTC} {...this.props} />
