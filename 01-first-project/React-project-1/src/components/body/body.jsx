@@ -3,7 +3,7 @@ import './body.css'
 import Nav from './body-components/nav';
 import { Routes, Route } from "react-router-dom";
 
-// import ProfileContainer from './body-components/body-content/Profile/ProfileContainer';
+import ProfileContainer from './body-components/body-content/Profile/ProfileContainer';
 // import MessagesContainer from './body-components/body-content/Messages/messagesContainer';
 // import Music from './body-components/body-content/Music/Music';
 // import News from './body-components/body-content/News/News';
@@ -18,7 +18,7 @@ import Preloader from '../common/preloader/preloader';
 
 import { Suspense } from 'react';
 
-const ProfileContainer = React.lazy(() => import('./body-components/body-content/Profile/ProfileContainer'));
+// const ProfileContainer = React.lazy(() => import('./body-components/body-content/Profile/ProfileContainer'));
 const MessagesContainer = React.lazy(() => import('./body-components/body-content/Messages/messagesContainer'));
 const Music = React.lazy(() => import('./body-components/body-content/Music/Music'));
 const Settings = React.lazy(() => import('./body-components/body-content/Settings/Settings'));

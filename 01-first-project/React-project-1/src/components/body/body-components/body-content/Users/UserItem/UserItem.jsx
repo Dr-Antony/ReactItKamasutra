@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import style from './UserItem.module.css'
 import userPhoto from './../../../../../../img/userPhoto.png'
-import axios from "axios";
+
 
 class UserItem extends React.Component {
     constructor(props) {

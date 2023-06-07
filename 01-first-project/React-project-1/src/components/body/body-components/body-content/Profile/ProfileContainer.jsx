@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from './profile.jsx';
 import { connect } from "react-redux";
-import { setUserProfile, getProfileApiTC, getStatusApiTC, updateStatusApiTC } from './../../../../../redux/profileReducer';
+import { setUserProfile, getProfileApiTC, getStatusApiTC, updateStatusApiTC,savePhoto } from './../../../../../redux/profileReducer';
 import { withAuthRedirect } from "../../../../../hoc/withAuthRedirect.tsx";
 import {
     Navigate,
@@ -37,7 +37,7 @@ class ProfileContainer extends React.Component {
     constructor(props) {
         super(props)
     }
-    refreshComponent = ()=>{
+    refreshComponent = () => {
         let userId = this.props.router.params.userId;
         if (!userId && this.props.isAuth) {
             userId = this.props.authorizedUserId;
@@ -45,21 +45,26 @@ class ProfileContainer extends React.Component {
         if (!userId && !this.props.isAuth) {
             <Navigate to={'/login'} />
         }
-        this.props.getProfileApiTC(userId)
         this.props.getStatusApiTC(userId)
+        this.props.getProfileApiTC(userId)
     }
     componentDidMount() {
         this.refreshComponent()
     }
-    // componentDidUpdate(prevProps,prevState) {
-    //     debugger
-    //     if (this.props.router.params.userId != prevProps.router.params.userId ) {
-    //         this.refreshComponent()
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        debugger
+        if (this.props.router.params.userId != prevProps.router.params.userId) {
+            debugger
+            this.refreshComponent()
+        }
+        if (this.props.status != prevProps.status) {
+            debugger
+            this.refreshComponent()
+        }
+    }
     render() {
         return (
-            <Profile profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatusApiTC} {...this.props} />
+            <Profile isOwner={!this.props.router.params.userId} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatusApiTC} {...this.props} />
         )
     }
 }
@@ -75,6 +80,6 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, { setUserProfile, getProfileApiTC, getStatusApiTC, updateStatusApiTC }),
+    connect(mapStateToProps, { setUserProfile, getProfileApiTC, getStatusApiTC, updateStatusApiTC,savePhoto }),
     withRouter,
     withAuthRedirect)(ProfileContainer);
