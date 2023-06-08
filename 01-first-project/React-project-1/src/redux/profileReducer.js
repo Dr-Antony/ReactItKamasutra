@@ -37,7 +37,7 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, postsData: state.postsData.filter(p => p.postId != action.postId) }
         }
         case SAVE_PHOTO_SUCCES: {
-            return { ...state, profile: {...state.profile, photos: action.photos} }
+            return { ...state, profile: { ...state.profile, photos: action.photos } }
         }
     };
     return state;
@@ -64,6 +64,23 @@ export const deletePost = (postId) => {
 export const savePhotoSucces = (photos) => {
     return { type: SAVE_PHOTO_SUCCES, photos }
 };
+export const setProfileAC = ()=>{};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const getProfileApiTC = (userId) => {
     return async (dispatch) => {
@@ -101,6 +118,16 @@ export const savePhoto = (file) => {
     }
 }
 
+export const setProfileData = (formData,userId) => {
+    return async (dispatch) => {
+        debugger
+        let response = await profileAPI.setProfile(formData)
+        if (response.data.resultCode === 0) {
+            debugger
+            dispatch(setProfileAC())
+        }
+    }
+}
 
 
 

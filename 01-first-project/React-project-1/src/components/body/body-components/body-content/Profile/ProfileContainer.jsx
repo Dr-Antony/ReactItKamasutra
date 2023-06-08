@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from './profile.jsx';
 import { connect } from "react-redux";
-import { setUserProfile, getProfileApiTC, getStatusApiTC, updateStatusApiTC,savePhoto } from './../../../../../redux/profileReducer';
+import { setUserProfile, getProfileApiTC, getStatusApiTC, updateStatusApiTC,savePhoto,setProfileData } from './../../../../../redux/profileReducer';
 import { withAuthRedirect } from "../../../../../hoc/withAuthRedirect.tsx";
 import {
     Navigate,
@@ -80,6 +80,6 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, { setUserProfile, getProfileApiTC, getStatusApiTC, updateStatusApiTC,savePhoto }),
+    connect(mapStateToProps, { setUserProfile, getProfileApiTC, getStatusApiTC, updateStatusApiTC,savePhoto,setProfileData }),
     withRouter,
     withAuthRedirect)(ProfileContainer);

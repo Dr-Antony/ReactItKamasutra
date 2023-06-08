@@ -1,0 +1,63 @@
+
+
+
+.description__container{
+    color: white;
+    display: flex;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.user__description{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.user_block{
+    margin-bottom: 10px;
+}
+.about__me{
+    margin-bottom: 5px;
+}
+.about__job{}
+.contacts{
+    
+}
+.contact__item{
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .form {
+    animation: go-left-right 2s ;
+    position: relative;
+    border: 2px solid green;
+    width: 50px;
+    height: 20px;
+    background: lime;
+}
+
+@keyframes go-left-right {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+}
+} */
