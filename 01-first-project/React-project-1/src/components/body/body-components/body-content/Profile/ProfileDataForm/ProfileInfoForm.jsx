@@ -6,14 +6,14 @@ import { required, maxLengthCreator } from "../../../../../../utils/validators/v
 
 
 
-const Contact = ({ contactTitle, contactValue }) => {
-    debugger
-    return (
-        <div className='contact__item'>
-            <div><b>{contactTitle}</b>: <Field placeholder={contactTitle} name={contactTitle} component={Input} validate={[required, maxLengthCreator(30)]} /></div>
-        </div>
-    )
-}
+// const Contact = ({ contactTitle, contactValue }) => {
+//     debugger
+//     return (
+//         <div className='contact__item'>
+//             <div><b>{contactTitle}</b>: <Field placeholder={contactTitle} name={contactTitle} component={Input}/></div>
+//         </div>
+//     )
+// }
 
 
 
@@ -25,12 +25,17 @@ const ProfileInfoFormContainer = (props) => {
             <div className={style.description__container}>
                 <div className={style.user__description}>
                     <div className={style.user_block}>
-                        <div className={style.about__me}><b>Full name: </b><Field placeholder="FullName" name={"FullName"} component={Textarea} validate={[required, maxLengthCreator(30)]} /></div>
-                        <div className={style.about__me}><b>About me: </b><Field placeholder="About me" name={"aboutMe"} component={Textarea} validate={[required, maxLengthCreator(30)]} /></div>
-                        <div className={style.about__job}><b>Looking job: </b><Field placeholder="Looking job" name={"lookingJob"} component={Input} type="checkbox" /></div>
-                        <div className={style.about__me}><b>Job description: </b><Field placeholder="LookingForAJobDescription" name={"LookingForAJobDescription"} component={Textarea} validate={[required, maxLengthCreator(30)]} /></div>
+                        <div className={style.about__me}><b>Full name: </b><Field defaultValue={props.profile.fullName} placeholder={props.profile.fullName} name={"FullName"} component={Textarea} validate={[maxLengthCreator(30)]} /></div>
+                        <div className={style.about__me}><b>About me: </b><Field defaultValue={props.profile.aboutMe} placeholder={props.profile.aboutMe} name={"aboutMe"} component={Textarea} validate={[maxLengthCreator(30)]} /></div>
+                        <div className={style.about__me}><b>Job description: </b><Field defaultValue={props.profile.LookingForAJobDescription} placeholder={props.profile.LookingForAJobDescription} name={"LookingForAJobDescription"} component={Textarea} validate={[maxLengthCreator(30)]} /></div>
+                        <div className={style.about__job}><b>Looking job: </b><Field placeholder="Looking job" name={"lookingJob"} component={Input} type={"checkbox"} /></div>
                     </div>
-                    {/* <div className={style.contacts}><b>Contacts:</b>{Object.keys(props.profile.contacts).map((key) => { return <Contact contactTitle={key} contactValue={props.profile.contacts[key]} /> })}</div> */}
+                    <div className={style.contacts}><b>Contacts:</b>{Object.keys(props.profile.contacts).map((key) => {
+                        return (
+                            <div>
+                                <b>{key}:</b><Field key={key} placeholder={key} name={key} component={Input} />
+                            </div>)
+                    })}</div>
                 </div>
             </div>
             <div><button>Save</button></div>
@@ -47,8 +52,10 @@ const ReduxProfileForm = reduxForm({
 
 const ProfileInfoForm = (props) => {
     debugger
-    const onSubmit = (formData) => {
-        props.setProfileData(formData)
+    const onSubmit = async (formData) => {
+        await props.setProfileData(formData)
+        await props.getProfileApiTC(props.authorizedUserId)
+        await props.goToEditMode()
     }
     debugger
     return (

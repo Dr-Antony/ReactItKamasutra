@@ -1,6 +1,5 @@
 import { profileAPI } from "../api/apiOfProfile";
-
-
+import { connect } from "react-redux";
 const ADD_POST = 'ADD-POST';
 const UPDATE_TEXT_OF_POST = 'UPDATE-TEXT-OF-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -64,7 +63,7 @@ export const deletePost = (postId) => {
 export const savePhotoSucces = (photos) => {
     return { type: SAVE_PHOTO_SUCCES, photos }
 };
-export const setProfileAC = ()=>{};
+
 
 
 
@@ -118,14 +117,12 @@ export const savePhoto = (file) => {
     }
 }
 
-export const setProfileData = (formData,userId) => {
+export const setProfileData = (formData,state) => {
+    
+    debugger
     return async (dispatch) => {
         debugger
         let response = await profileAPI.setProfile(formData)
-        if (response.data.resultCode === 0) {
-            debugger
-            dispatch(setProfileAC())
-        }
     }
 }
 

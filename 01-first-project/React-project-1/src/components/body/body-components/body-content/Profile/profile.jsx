@@ -33,7 +33,7 @@ const Profile = React.memo((props) => {
                         <div className='user__name'>{props.profile.fullName}</div>
                         <div className='user__status'><ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} userId={props.profile.userId} /></div>
                     </div>
-                    {editMode ? <ProfileInfoForm {...props} /> : <ProfileInfo {...props} isOwner={props.isOwner} goToEditMode={() => { setEditMode(true) }} />}
+                    {editMode ? <ProfileInfoForm  goToEditMode={() => { setEditMode(false) }}  {...props} /> : <ProfileInfo {...props} isOwner={props.isOwner} goToEditMode={() => { setEditMode(true) }} />}
                 </div>
                 <div className='profile__posts'>
                     <PostsContainer />
@@ -44,12 +44,14 @@ const Profile = React.memo((props) => {
 })
 
 const ProfileInfo = (props) => {
+    debugger
     return (
         <div className='description__container'>
             {props.isOwner ? <div><button onClick={props.goToEditMode}>Редактировать</button></div> : null}
             <div className='user__description'>
                 <div className='user_block'>
                     <div className='about__me'><b>About me: </b>{props.profile.aboutMe ? props.profile.aboutMe : 'About me'}</div>
+                    <div className='job__description'><b>About my job: </b>{props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : 'lookingForAJobDescription'}</div>
                     <div className='about__job'><b>Looking job: </b>{props.profile.lookingForAJob ? 'Yes' : 'No'}</div>
                 </div>
                 <div className='contacts'><b>Contacts:</b>{Object.keys(props.profile.contacts).map((key) => { return <Contact contactTitle={key} contactValue={props.profile.contacts[key]} /> })}</div>
@@ -58,6 +60,7 @@ const ProfileInfo = (props) => {
     )
 }
 const Contact = ({ contactTitle, contactValue }) => {
+    debugger
     return (
         <div className='contact__item'>
             {contactValue ? <div><b>{contactTitle}</b>: {contactValue}</div> : null}
