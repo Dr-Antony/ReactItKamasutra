@@ -13,9 +13,9 @@ const instance = axios.create({
 
 
 export const authorizeAPI = {
-    login: (email, password, rememberMe = false) => {
+    login: (email, password, rememberMe = false, captcha=null) => {
         return (
-            instance.post(`/auth/login`, { email, password, rememberMe })
+            instance.post(`/auth/login`, { email, password, rememberMe, captcha })
         )
     },
     logout: () => {

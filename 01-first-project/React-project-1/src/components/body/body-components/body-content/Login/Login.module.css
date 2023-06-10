@@ -108,7 +108,7 @@
 .error_error {
     color:red;
     transform: translateY(-55px);
-    animation-name: errorr;
+    animation-name: errorr 3s;
 }
 
 
@@ -127,3 +127,45 @@
 }
 }
 
+.login__captcha{
+    margin-top: 10px;
+    animation-name: captcha ;
+    animation-duration: 1s;
+}
+
+.login__captcha img{
+    width: 150px;
+    height: 50px;
+}
+@keyframes captcha {
+    0% {
+        opacity: 0;
+        transform: translateX(100px)
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px)
+}
+}
+
+.login__captcha_input{
+    margin-top: 5px;
+    animation-name: captcha-input ;
+    animation-duration: 1s;
+}
+.login__captcha_input input{
+    width: 150px;
+    
+}
+
+
+@keyframes captcha-input {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px)
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px)
+}
+}

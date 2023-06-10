@@ -2,7 +2,7 @@ import React from "react";
 import style from './Login.module.css';
 import { Field, reduxForm } from "redux-form";
 
-import { Input } from "../../../../common/FormsControl/FormsControl";
+import { Input, createField } from "../../../../common/FormsControl/FormsControl";
 import { required, maxLengthCreator } from "../../../../../utils/validators/validators";
 import { loginTC } from "../../../../../redux/authReducer";
 
@@ -24,6 +24,8 @@ const LoginForm = (props) => {
             <div className={style.login__checkbox}>
                 <Field type={"checkbox"} name={"rememberMe"} component={Input} /> <b>remember me</b> 
             </div>
+            {props.captchaUrl && <div className={style.login__captcha}><img src={props.captchaUrl}/></div> }
+            {props.captchaUrl && <div className={style.login__captcha_input}><Field placeholder="Symbols" name={"captcha"} component={Input} validate={[required]} /></div> }
             <div className={style.login__button}>
                 <button>Login</button>
             </div>
@@ -38,8 +40,8 @@ const ReduxLoginForm = reduxForm({
 const Login = (props) => {
 
     const onSubmit = async (formData) => {
-        let { email, password, rememberMe } = formData;
-        await props.loginTC(email, password, rememberMe);
+        let { email, password, rememberMe, captcha } = formData;
+        await props.loginTC(email, password, rememberMe, captcha);
     }
 
     if (props.isAuth) {
@@ -47,13 +49,14 @@ const Login = (props) => {
     }
     return (
         <div className={style.login__wrapper}>
-            <ReduxLoginForm onSubmit={onSubmit} invalidData={props.invalidData} />
+            <ReduxLoginForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} invalidData={props.invalidData} />
         </div>
     )
 }
 
 let mapStateToProps = (state) => {
     return {
+        captchaUrl: state.auth.captchaUrl,
         isAuth: state.auth.isAuth,
         invalidData: state.auth.invalidData
     }

@@ -54,19 +54,19 @@ const ProfileInfo = (props) => {
                     <div className='job__description'><b>About my job: </b>{props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : 'lookingForAJobDescription'}</div>
                     <div className='about__job'><b>Looking job: </b>{props.profile.lookingForAJob ? 'Yes' : 'No'}</div>
                 </div>
-                <div className='contacts'><b>Contacts:</b>{Object.keys(props.profile.contacts).map((key) => { return <Contact contactTitle={key} contactValue={props.profile.contacts[key]} /> })}</div>
+                {/* <div className='contacts'><b>Contacts:</b>{Object.keys(props.profile.contacts).map((key) => { return <Contact contactTitle={key} contactValue={props.profile.contacts[key]} /> })}</div> */}
             </div>
         </div>
     )
 }
-const Contact = ({ contactTitle, contactValue }) => {
-    debugger
-    return (
-        <div className='contact__item'>
-            {contactValue ? <div><b>{contactTitle}</b>: {contactValue}</div> : null}
-        </div>
-    )
-}
+// const Contact = ({ contactTitle, contactValue }) => {
+//     debugger
+//     return (
+//         <div className='contact__item'>
+//             {contactValue ? <div><b>{contactTitle}</b>: {contactValue}</div> : null}
+//         </div>
+//     )
+// }
 
 
 export default Profile;

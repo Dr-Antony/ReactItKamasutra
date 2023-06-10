@@ -30,12 +30,7 @@ const ProfileInfoFormContainer = (props) => {
                         <div className={style.about__me}><b>Job description: </b><Field defaultValue={props.profile.LookingForAJobDescription} placeholder={props.profile.LookingForAJobDescription} name={"LookingForAJobDescription"} component={Textarea} validate={[maxLengthCreator(30)]} /></div>
                         <div className={style.about__job}><b>Looking job: </b><Field placeholder="Looking job" name={"lookingJob"} component={Input} type={"checkbox"} /></div>
                     </div>
-                    <div className={style.contacts}><b>Contacts:</b>{Object.keys(props.profile.contacts).map((key) => {
-                        return (
-                            <div>
-                                <b>{key}:</b><Field key={key} placeholder={key} name={key} component={Input} />
-                            </div>)
-                    })}</div>
+                    
                 </div>
             </div>
             <div><button>Save</button></div>
