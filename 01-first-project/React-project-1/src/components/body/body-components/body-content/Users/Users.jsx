@@ -2,7 +2,7 @@ import React from "react";
 import UserItem from "./UserItem/UserItem";
 import style from './Users.module.css';
 import { useState } from "react";
-
+import classNames from "classnames";
 let Users = (props) => {
     let allUsers = () => {
         return (
@@ -43,7 +43,8 @@ let Users = (props) => {
             <button onClick={beforePages}>Назад</button>
             </div>
                 {pages.map((p) => {
-                    return (<button className={props.currentPage === p ? style.selected_page : style.unselected_page} onClick={(e) => { props.pageChange(p) }}>{p}</button>)
+                    const unselectedSelected = classNames(style.unselected_page,{[style.selected_page]:props.currentPage === p})// Это пример как работать с клааснеймами через одноименную библиотеку. Очень удобно.!!! не очень то удобно в данном случае, так как переменная создаётся на каждую итерацию, что не делает приложение производительным.
+                    return (<button className={unselectedSelected} onClick={(e) => { props.pageChange(p) }}>{p}</button>)
                 })}
                 <div className={style.users__button_paginator}>
                     <button onClick={nextPages}>Вперёд</button>
@@ -59,7 +60,7 @@ export default Users;
 
 
 
-
+// props.currentPage === p ? style.selected_page : style.unselected_page // //(классический пример) Это пример как работать с клааснеймами через одноименную библиотеку. Очень удобно.
 
 
 

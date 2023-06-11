@@ -54,6 +54,7 @@ class Body extends React.Component {
                             <Route path="/News" element={<News />} />
                             <Route path="/Users" element={<UsersContainer />} />
                             <Route path="/Settings" element={<Settings />} />
+                            <Route path="*" element={<div>Not found 404</div>} />
                         </Routes>
                         </Suspense>
                     </div>

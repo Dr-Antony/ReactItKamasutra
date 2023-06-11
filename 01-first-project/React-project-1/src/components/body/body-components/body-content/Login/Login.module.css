@@ -37,7 +37,8 @@
     background: no-repeat;
     top: 36%;
     padding: 5px 15px;
-    
+    animation-name: errorr ;
+    animation-duration: 1s ;
 }
 
 
@@ -108,7 +109,8 @@
 .error_error {
     color:red;
     transform: translateY(-55px);
-    animation-name: errorr 3s;
+    animation-name: errorr ;
+    animation-duration: 1s ;
 }
 
 
@@ -116,10 +118,6 @@
     0% {
         opacity: 0;
         transform: translateX(100px)
-    }
-    50% {
-        opacity: 0.5;
-        transform: translateX(50px)
     }
     100% {
         opacity: 1;

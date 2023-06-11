@@ -1,7 +1,7 @@
 import React from "react";
 import style from './Login.module.css';
 import { Field, reduxForm } from "redux-form";
-
+import classNames from "classnames";
 import { Input, createField } from "../../../../common/FormsControl/FormsControl";
 import { required, maxLengthCreator } from "../../../../../utils/validators/validators";
 import { loginTC } from "../../../../../redux/authReducer";
@@ -11,11 +11,14 @@ import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const LoginForm = (props) => {
+
+    const validInvalid = classNames(style.login__login,{[style.error]:props.invalidData}) // Это пример как работать с клааснеймами через одноименную библиотеку. Очень удобно.
     debugger
     return (
         <form onSubmit={props.handleSubmit} className={ style.login__container }>
             {props.error? <div className={style.error_error}><span>{props.error}</span></div>: null}
-            <div className={!props.invalidData ? style.login__login : (style.login__login + ' ' + style.error )}>
+            {/* <div className={!props.invalidData ? style.login__login : (style.login__login + ' ' + style.error )}> */}
+            <div className={validInvalid}>
                 <Field placeholder="Email" name={"email"} component={Input} validate={[required, maxLengthCreator(30)]} />
             </div>
             <div className={!props.invalidData ? style.login__password : (style.login__password + ' ' + style.error )}>
