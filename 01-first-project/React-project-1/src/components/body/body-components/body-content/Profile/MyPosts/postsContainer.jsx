@@ -1,6 +1,6 @@
 
 import Posts from './posts';
-import { addPostActionCreator, chengeTextActionCreator } from '../../../../../../redux/profileReducer';
+import { addPostActionCreator, chengeTextActionCreator } from '../../../../../../redux/profileReducer.ts';
 import { connect } from 'react-redux';
 
 

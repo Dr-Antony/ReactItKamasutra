@@ -4,7 +4,7 @@ import { Field, reduxForm } from "redux-form";
 import classNames from "classnames";
 import { Input, createField } from "../../../../common/FormsControl/FormsControl";
 import { required, maxLengthCreator } from "../../../../../utils/validators/validators";
-import { loginTC } from "../../../../../redux/authReducer";
+import { loginTC } from "../../../../../redux/authReducer.ts";
 
 import { connect } from "react-redux";
 

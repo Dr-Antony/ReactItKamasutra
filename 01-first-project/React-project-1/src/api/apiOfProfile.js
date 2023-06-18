@@ -1,5 +1,5 @@
 import axios from "axios";
-import { savePhoto } from "../redux/profileReducer";
+import { savePhoto } from "../redux/profileReducer.ts";
 
 
 const instance = axios.create({

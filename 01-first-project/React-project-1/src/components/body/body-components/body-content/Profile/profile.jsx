@@ -28,7 +28,7 @@ const Profile = React.memo((props) => {
                 <div className='profile__user'>
                     <div className='user__background_img'><img src={backGround} /></div>
                     <div className='user__avatar'>{props.profile.photos.large ? <img src={props.profile.photos.large} /> : <img src={userPhoto} />}</div>
-                    <div>{props.isOwner && <input type={"file"} onChange={photoSelector} />}</div>
+                    <div>{props.isOwner && <input type={"file"}   onChange={photoSelector} />}</div>
                     <div className='user__name_and_status'>
                         <div className='user__name'>{props.profile.fullName}</div>
                         <div className='user__status'><ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} userId={props.profile.userId} /></div>

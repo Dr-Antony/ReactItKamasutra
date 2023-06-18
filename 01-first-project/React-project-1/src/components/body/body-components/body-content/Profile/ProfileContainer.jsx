@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from './profile.jsx';
 import { connect } from "react-redux";
-import { setUserProfile, getProfileApiTC, getStatusApiTC, updateStatusApiTC,savePhoto,setProfileData } from './../../../../../redux/profileReducer';
+import { setUserProfile, getProfileApiTC, getStatusApiTC, updateStatusApiTC,savePhoto,setProfileData } from './../../../../../redux/profileReducer.ts';
 import { withAuthRedirect } from "../../../../../hoc/withAuthRedirect.tsx";
 import {
     Navigate,

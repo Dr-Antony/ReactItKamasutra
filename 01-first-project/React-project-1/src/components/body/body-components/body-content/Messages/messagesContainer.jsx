@@ -1,5 +1,5 @@
 import Messages from './Messages';
-import { addMessageActionCreator,chengeTextMessageActionCreator } from '../../../../../redux/dialogsReducer';
+import { addMessageActionCreator,chengeTextMessageActionCreator } from '../../../../../redux/dialogsReducer.ts';
 import { connect } from 'react-redux';
 
 import { withAuthRedirect } from '../../../../../hoc/withAuthRedirect.tsx';
