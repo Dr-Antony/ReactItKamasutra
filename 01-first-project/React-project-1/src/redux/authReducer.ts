@@ -9,15 +9,6 @@ const FETCHING = 'FETCHING';
 const INVALID = 'INVALID';
 const GET_CAPTCHA = 'GET_CAPTCHA';
 
-// export type InitialStateType = {
-//     id: null | Number,
-//     email: null | String,
-//     login: null | String,
-//     isAuth: Boolean,
-//     isFetching: null | Boolean,
-//     invalidData: null | any,
-//     captchaUrl: null | any,
-// }
 
 let initialState = {
     id: null as (null | Number),
@@ -102,7 +93,7 @@ export const getMyDataTC = () => {
 }
 
 export const loginTC = (email: String, password: String, rememberMe: boolean, captcha: any) => {
-    return async (dispatch) => {
+    return async (dispatch:any) => {
         let response = await authorizeAPI.login(email, password, rememberMe, captcha)
         if (response.data.resultCode === 0) {
             dispatch(getMyDataTC())

@@ -23,7 +23,7 @@ const MessagesContainer = React.lazy(() => import('./body-components/body-conten
 const Music = React.lazy(() => import('./body-components/body-content/Music/Music'));
 const Settings = React.lazy(() => import('./body-components/body-content/Settings/Settings'));
 const News = React.lazy(() => import('./body-components/body-content/News/News'));
-const UsersContainer = React.lazy(() => import('./body-components/body-content/Users/UsersContainer'));
+const UsersContainer = React.lazy(() => import('./body-components/body-content/Users/UsersContainer.tsx'));
 const Login = React.lazy(() => import('./body-components/body-content/Login/Login'));
 //React lazy и Suspense  - необходимы чтоб подгружать не сразу все компоненты , а те, которые необходимы только сейчас . Работу можешь оценить в Network
 

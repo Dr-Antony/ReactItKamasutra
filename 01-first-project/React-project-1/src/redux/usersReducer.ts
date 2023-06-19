@@ -17,7 +17,7 @@ type FollowingProgressType = {
 
 
 
-type UsersType = {
+export type UsersType = {
     id: Number,
     name: String,
     status: String,

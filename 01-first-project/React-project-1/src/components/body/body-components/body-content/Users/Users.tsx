@@ -3,11 +3,55 @@ import UserItem from "./UserItem/UserItem";
 import style from './Users.module.css';
 import { useState } from "react";
 import classNames from "classnames";
-let Users = (props) => {
+import { PhotosType } from "../../../../../Types/Types";
+
+
+
+
+
+type UsersType = {
+    followed:boolean,
+    id:number,
+    name:string,
+    photos:PhotosType
+    status:null | string,
+    uniqueUrlName:any
+}
+
+
+type StateType={
+    currentPage:number,
+    followingProgress:Array<number>,
+    isFetching:boolean,
+    pageSize:number,
+    totalUsersCount:number,
+    users:Array<UsersType>
+}
+
+
+type PropsType = {
+    currentPage:number,
+    follow:any,
+    followUsr:any,
+    followingProgress:Array<number>,
+    pageChange:any,
+    pageSize:number,
+    setFollowingProgress:()=>{},
+    setPage:()=>{},
+    setUsers:()=>{},
+    state:StateType,
+    totalUsersCount:number,
+    unfollowUsr:any
+}
+
+
+
+
+let Users:React.FC<PropsType> = (props) => {
+    debugger
     let allUsers = () => {
         return (
-            
-            props.state.users.map((user) => {
+            props.state.users.map((user:UsersType) => {
                 return (<UserItem id={user.id} followed={user.followed} key={user.id} photo={user.photos} name={user.name} followingProgress={props.followingProgress} functions={props} />)
             })
         )
@@ -16,16 +60,16 @@ let Users = (props) => {
     let [pages,setPages] = useState([1,2,3,4,5])
     
     let nextPages = ()=>{
-        let nextPages = []
+        let nextPages:Array<number> = []
         let right = pages[pages.length-1]
-        for (let i = right; i <= pagesCount && i < right + 5 ; i++) {
+        for (let i:number = right; i <= pagesCount && i < right + 5 ; i++) {
             nextPages.push(i)
         }
         console.log(nextPages)
         setPages([...nextPages])
     }
     let beforePages =  ()=> {
-        let nextPages = []
+        let nextPages:Array<number> = []
         let left = pages[0]
         if (left<=5) {
             left = 6

@@ -5,9 +5,15 @@ import home2 from '../../img/home2.png'
 import { NavLink } from 'react-router-dom';
 import Preloader from '../common/preloader/preloader';
 
+type PropsType = {
+    isAuth: boolean,
+    login: string,
+    isFetching: boolean,
+    logoutTC: ()=>void
+}
 
-
-const Header = (props) => {
+const Header:React.FC<PropsType> = (props) => {
+    debugger
     return (
         <header className='header'>
             <div className='header__logo'><img src={logo} /></div>

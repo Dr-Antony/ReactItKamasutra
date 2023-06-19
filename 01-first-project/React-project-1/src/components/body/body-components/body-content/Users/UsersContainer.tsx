@@ -2,38 +2,56 @@
 import { connect } from "react-redux";
 import { setUsers, setPage, setFollowingProgress, getUsersTC, followTC, unfollowTC } from "../../../../../redux/usersReducer.ts";
 import React from "react";
-import Users from './Users'
-import Preloader from "../../../../common/preloader/preloader";
-import { takeCurrentPage, takeFollowingProgress, takeIsFetching, takePageSize, takeState, takeTotalUsersCount } from "../../../../../redux/Selectors/usersSelectors";
+import Users from './Users.tsx';
+import Preloader from "../../../../common/preloader/preloader.jsx";
+import { takeCurrentPage, takeFollowingProgress, takeIsFetching, takePageSize, takeState, takeTotalUsersCount } from "../../../../../redux/Selectors/usersSelectors.ts";
+
+
+import { AppStateType } from "../../../../../redux/reduxStore.js";
 
 
 
-class UsersAPI extends React.Component {
-    constructor(props) {
+
+// type PropsType = {
+//     state: any,
+//     currentPage: number,
+//     pageSize: number,
+//     setUsers: any,
+//     setPage: any,
+//     setFollowingProgress: any,
+//     getUsersTC: (currentPage: number, pageSize: number) => void,
+//     totalUsersCount: number,
+//     follow: () => void,
+//     unfollowTC: any,
+//     followTC: any,
+//     followingProgress: Array<number>,
+//     isFetching: boolean,
+//     pageChange: any
+// }
+
+
+type PropsType = MapStatePropsType & MapDispatchType;
+
+
+
+
+class UsersAPI extends React.Component<PropsType> {
+    constructor(props: any) {
         super(props)
     }
-
-
-
     componentDidMount() {
         this.props.getUsersTC(this.props.currentPage, this.props.pageSize)
     }
-    pageChange = (pageNumber) => {
+    pageChange = (pageNumber: number) => {
         this.props.setPage(pageNumber)
         this.props.getUsersTC(pageNumber, this.props.pageSize)
     }
-    unfollowUsr =  (usrId) => {
+    unfollowUsr = (usrId: number) => {
         this.props.unfollowTC(usrId)
     }
-    followUsr = (usrId) => {
+    followUsr = (usrId: number) => {
         this.props.followTC(usrId)
     }
-
-
-
-
-
-
     render() {
         return (
             <>
@@ -41,7 +59,6 @@ class UsersAPI extends React.Component {
                 <Users
                     unfollowUsr={this.unfollowUsr}
                     followUsr={this.followUsr}
-
                     pageChange={this.pageChange}
                     state={this.props.state}
                     setUsers={this.props.setUsers}
@@ -52,13 +69,28 @@ class UsersAPI extends React.Component {
                     follow={this.props.follow}
                     setFollowingProgress={this.props.setFollowingProgress}
                     followingProgress={this.props.followingProgress}
-
                 />
             </>)
     }
 }
 
-let mapStateToProps = (state) => {
+
+
+
+
+
+
+
+type MapStatePropsType = {
+    state: (state: AppStateType) => { state: AppStateType },
+    pageSize: (state: AppStateType) => { pageSize: number },
+    totalUsersCount: (state: AppStateType) => { totalUsersCount: number },
+    currentPage: (state: AppStateType) => { currentPage: number },
+    isFetching: (state: AppStateType) => { isFetching: boolean },
+    followingProgress: (state: AppStateType) => { followingProgress: Array<number> }
+}
+
+let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         state: takeState(state),
         pageSize: takePageSize(state),
@@ -68,7 +100,14 @@ let mapStateToProps = (state) => {
         followingProgress: takeFollowingProgress(state)
     };
 };
-
+type MapDispatchType = {
+    setUsers:()=>void,
+    setPage:()=>void,
+    setFollowingProgress:()=>void,
+    getUsersTC:()=>void,
+    followTC:()=>void,
+    unfollowTC:()=>void
+}
 
 
 const UsersContainer = connect(mapStateToProps, {
