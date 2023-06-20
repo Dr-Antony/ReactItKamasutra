@@ -1,4 +1,3 @@
-
 import { getMyDataTC } from "./authReducer.ts";
 
 
@@ -12,7 +11,7 @@ let initialState: InitialStateType = {
     initialized: false
 };
 
-const appReducer = (state = initialState, action: any):InitialStateType => {
+const appReducer = (state = initialState, action: ActionsTypes):InitialStateType => {
     switch (action.type) {
         case SET_INITIALIZED: {
             return {
@@ -23,7 +22,7 @@ const appReducer = (state = initialState, action: any):InitialStateType => {
     };
     return state;
 };
-
+type ActionsTypes = SetInitializedType;
 type SetInitializedType = {
     type: typeof SET_INITIALIZED
 }

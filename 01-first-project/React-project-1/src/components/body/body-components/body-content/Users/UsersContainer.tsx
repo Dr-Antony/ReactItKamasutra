@@ -12,25 +12,25 @@ import { AppStateType } from "../../../../../redux/reduxStore.js";
 
 
 
-// type PropsType = {
-//     state: any,
-//     currentPage: number,
-//     pageSize: number,
-//     setUsers: any,
-//     setPage: any,
-//     setFollowingProgress: any,
-//     getUsersTC: (currentPage: number, pageSize: number) => void,
-//     totalUsersCount: number,
-//     follow: () => void,
-//     unfollowTC: any,
-//     followTC: any,
-//     followingProgress: Array<number>,
-//     isFetching: boolean,
-//     pageChange: any
-// }
+type PropsType = {
+    state: any,
+    currentPage: number,
+    pageSize: number,
+    setUsers: any,
+    setPage: any,
+    setFollowingProgress: any,
+    getUsersTC: (currentPage: number, pageSize: number) => void,
+    totalUsersCount: number,
+    follow: () => void,
+    unfollowTC: any,
+    followTC: any,
+    followingProgress: Array<number>,
+    isFetching: boolean,
+    pageChange: any
+}
 
 
-type PropsType = MapStatePropsType & MapDispatchType;
+// type PropsType = MapStatePropsType & MapDispatchType;
 
 
 
@@ -81,16 +81,16 @@ class UsersAPI extends React.Component<PropsType> {
 
 
 
-type MapStatePropsType = {
-    state: (state: AppStateType) => { state: AppStateType },
-    pageSize: (state: AppStateType) => { pageSize: number },
-    totalUsersCount: (state: AppStateType) => { totalUsersCount: number },
-    currentPage: (state: AppStateType) => { currentPage: number },
-    isFetching: (state: AppStateType) => { isFetching: boolean },
-    followingProgress: (state: AppStateType) => { followingProgress: Array<number> }
-}
+// type MapStatePropsType = {
+//     state: (state: AppStateType) => { state: AppStateType },
+//     pageSize: (state: AppStateType) => { pageSize: number },
+//     totalUsersCount: (state: AppStateType) => { totalUsersCount: number },
+//     currentPage: (state: AppStateType) => { currentPage: number },
+//     isFetching: (state: AppStateType) => { isFetching: boolean },
+//     followingProgress: (state: AppStateType) => { followingProgress: Array<number> }
+// }
 
-let mapStateToProps = (state: AppStateType): MapStatePropsType => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         state: takeState(state),
         pageSize: takePageSize(state),
@@ -109,12 +109,12 @@ type MapDispatchType = {
     unfollowTC:()=>void
 }
 
-
+//@ts-ignore
 const UsersContainer = connect(mapStateToProps, {
     setUsers,
     setPage,
     setFollowingProgress,
     getUsersTC, followTC, unfollowTC
 })(UsersAPI)
-
+//@ts-ignore
 export default UsersContainer;
