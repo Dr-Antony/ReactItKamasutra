@@ -1,0 +1,31 @@
+import axios from "axios";
+
+
+const instance = axios.create({
+    withCredentials: true,
+    baseURL: `https://social-network.samuraijs.com/api/1.0`,
+    headers: { "API-KEY": "d58c2d5f-0707-4689-9a81-2885da2de5f9" }
+})
+
+export enum ResultCodeEnum {
+    Succes = 0,
+    Error = 1,
+}
+export enum ResultCodeForCaptchaEnum {
+    CaptchaIsRequired = 10
+}
+type AuthMeType = {
+    data:{id:number,email:string,login:string},
+    resultCode:ResultCodeEnum,
+    messages: Array<string>
+}
+
+export const headerAPI =  {
+        getMyData: () => {
+            return (
+                instance.get<AuthMeType>(`/auth/me`).then(response => response.data)
+            )
+        }
+};
+
+
