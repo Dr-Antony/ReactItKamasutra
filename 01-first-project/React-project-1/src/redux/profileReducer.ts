@@ -1,5 +1,6 @@
-import { profileAPI } from "../api/apiOfProfile";
-import { PhotosType } from "../Types/Types";
+import { Dispatch } from "react";
+import { profileAPI } from "../api/apiOfProfile.ts";
+import { PhotosType,ProfileType } from "../Types/Types";
 
 
 const ADD_POST = 'ADD-POST';
@@ -19,25 +20,7 @@ type PostsDataType = {
     likeCount: Number,
     postId: Number
 }
-type ContactsType = {
-    github: string
-    vk: string
-    facebook: string
-    instagram: string
-    twitter: string
-    website: string
-    youtube: string
-    mainLink: string
-}
 
-type ProfileType = {
-    userId: Number,
-    lookingForAJob: Boolean,
-    lookingForAJobDescription: String,
-    fullName: String,
-    contacts: ContactsType,
-    photos: PhotosType
-}
 
 
 
@@ -55,7 +38,7 @@ let initialState = {
 
 export type InitialStateType = typeof initialState;
 
-const profileReducer = (state = initialState, action: any): InitialStateType => {
+const profileReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case ADD_POST: {
             return { ...state, postsData: [...state.postsData, { message: action.textOfNewPost, likeCount: 0, postId: state.postsData.length++ }], newText: '' };;
@@ -67,7 +50,7 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
             return { ...state, status: action.statusText }
         }
         case SET_MY_STATUS: {
-            return { ...state, status: action.status }
+            return { ...state, status: action.statusText }
         }
         case DELETE_POST: {
             return { ...state, postsData: state.postsData.filter(p => p.postId != action.postId) }
@@ -80,7 +63,7 @@ const profileReducer = (state = initialState, action: any): InitialStateType => 
 };
 
 
-
+type ActionsTypes = AddPostType|ChengeTextType|SetUserProfileType|GetUserStatusType|UpdateStatusType|DeletePostType|SavePhotoSuccesType;
 
 type AddPostType = {
     type: typeof ADD_POST,
@@ -155,27 +138,27 @@ export const savePhotoSucces = (photos: PhotosType): SavePhotoSuccesType => {
 
 
 
-
+type DispatchType = Dispatch<ActionsTypes>;
 
 
 
 
 
 export const getProfileApiTC = (userId: Number) => {
-    return async (dispatch: any) => {
+    return async (dispatch: DispatchType) => {
         let data = await profileAPI.getProfile(userId);
         dispatch(setUserProfile(data))
     }
 }
 export const getStatusApiTC = (userId: Number) => {
-    return async (dispatch: any) => {
+    return async (dispatch: DispatchType) => {
         let statusText = await profileAPI.getStatus(userId);
         dispatch(getUserStatus(statusText))
     }
 }
 
 export const updateStatusApiTC = (status: String, userId: Number) => {
-    return async (dispatch: any) => {
+    return async (dispatch: DispatchType) => {
         let response = await profileAPI.updateStatus(status);
         if (response.data.resultCode === 0) {
             dispatch(updateStatus(status))
@@ -185,7 +168,7 @@ export const updateStatusApiTC = (status: String, userId: Number) => {
     }
 }
 export const savePhoto = (file: any) => {
-    return async (dispatch: any) => {
+    return async (dispatch: DispatchType) => {
         let response = await profileAPI.savePhoto(file)
         if (response.data.resultCode === 0) {
             debugger
@@ -195,7 +178,7 @@ export const savePhoto = (file: any) => {
 }
 
 export const setProfileData = (formData: any, state: any) => {
-    return async (dispatch: any) => {
+    return async (dispatch: DispatchType) => {
         debugger
         let response = await profileAPI.setProfile(formData)
     }

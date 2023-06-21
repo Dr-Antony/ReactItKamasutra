@@ -1,4 +1,7 @@
+import { Dispatch } from "react";
 import { getMyDataTC } from "./authReducer.ts";
+import { AppStateType } from "./reduxStore.js";
+import { ThunkAction } from "redux-thunk";
 
 
 const SET_INITIALIZED = 'SET-INITIALIZED';
@@ -23,6 +26,7 @@ const appReducer = (state = initialState, action: ActionsTypes):InitialStateType
     return state;
 };
 type ActionsTypes = SetInitializedType;
+
 type SetInitializedType = {
     type: typeof SET_INITIALIZED
 }
@@ -31,8 +35,15 @@ export const setInitialized = ():SetInitializedType => {
     return { type: SET_INITIALIZED }
 };
 
+
+
+type ThunkType = ThunkAction<Promise<void>, AppStateType,unknown,ActionsTypes>
+
+type GetStateType = ()=>AppStateType
+type DispatchType = Dispatch<ActionsTypes>;
+
 export const initializeApp = () => {
-    return (dispatch: any) => {
+    return (dispatch:DispatchType | any,getState:GetStateType) => {
         let promis = dispatch(getMyDataTC())
         promis.then(() => { dispatch(setInitialized()) })
     }

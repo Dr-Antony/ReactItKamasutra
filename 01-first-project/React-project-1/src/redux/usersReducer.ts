@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { usersAPI } from "../api/apiOfUsers";
+import { usersAPI } from "../api/apiOfUsers.ts";
 import { PhotosType } from "../Types/Types";
 import { AppStateType } from "./reduxStore";
 import { ThunkAction } from "redux-thunk";
@@ -132,7 +132,9 @@ export const setFollowingProgress = (isFetching: boolean, userId: number):SetFol
 type GetStateType = ()=>AppStateType
 type DispatchType = Dispatch<ActionsTypes>;
 
-type ThunkType = ThunkAction<Promise<void>, AppStateType,unknown,ActionsTypes>
+type ThunkType = ThunkAction<Promise<void>, AppStateType,unknown,ActionsTypes>;
+
+
 ///////////// This first various of typisation of thunk-creator
 export const getUsersTC = (currentPage:number, pageSize:number) => {
     return async (dispatch:DispatchType,getState:GetStateType) => {

@@ -1,5 +1,6 @@
-import axios from "axios";
-import { savePhoto } from "../redux/profileReducer.ts";
+import axios, { AxiosResponse } from "axios";
+import { ProfileType } from "../Types/Types";
+
 
 
 const instance = axios.create({
@@ -10,24 +11,24 @@ const instance = axios.create({
 
 
 export const profileAPI = {
-    getProfile: (userId) => {
+    getProfile: (userId:number) => {
         return (
             instance.get(`/profile/${userId}`).then(response => response.data)
         )
     },
-    getStatus: (userId) => {
+    getStatus: (userId:number) => {
         return (
 
             instance.get(`/profile/status/${userId}`).then(response => response.data)
         )
 
     },
-    updateStatus: (status) => {
+    updateStatus: (status:string) => {
         return (
             instance.put(`/profile/status`, { status: status })
         )
     },
-    savePhoto: (photo) => {
+    savePhoto: (photo:any) => {
         const formData = new FormData();
         formData.append('image', photo)
         return (
@@ -38,9 +39,11 @@ export const profileAPI = {
             })
         )
     },
-    setProfile: (formData) => {
+    setProfile: (formData:ProfileType) => {
         return (
             instance.put(`/profile`, formData)
         )
     }
 };
+
+
