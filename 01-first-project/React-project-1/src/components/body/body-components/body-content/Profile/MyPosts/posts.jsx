@@ -5,8 +5,8 @@ import Post from './post/post';
 
 
 import { Field, reduxForm } from "redux-form";
-import { required, maxLengthCreator } from '../../../../../../utils/validators/validators';
-import { Textarea } from '../../../../../common/FormsControl/FormsControl';
+import { required, maxLengthCreator } from '../../../../../../utils/validators/validators.ts';
+import { Textarea } from '../../../../../common/FormsControl/FormsControl.tsx';
 
 class PostsForm extends React.Component {
     render() {

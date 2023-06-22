@@ -1,8 +1,8 @@
 import React from "react"
 import style from "./ProfileInfoForm.module.css"
 import { Field, reduxForm } from "redux-form";
-import { Input, Textarea } from "../../../../../common/FormsControl/FormsControl";
-import { required, maxLengthCreator } from "../../../../../../utils/validators/validators";
+import { Input, Textarea } from "../../../../../common/FormsControl/FormsControl.tsx";
+import { required, maxLengthCreator } from "../../../../../../utils/validators/validators.ts";
 
 
 
