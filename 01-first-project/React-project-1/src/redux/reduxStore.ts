@@ -8,8 +8,8 @@ import authReducer from "./authReducer.ts";
 import thunkMiddleware from "redux-thunk";
 import { reducer as formReducer } from 'redux-form';
 import appReducer from "./appReducer.ts";
-
-
+type PropertiesTypes<T>= T extends {[key:string]: infer U} ? U: never ;
+export type InferActionsTypes<T extends {[key:string]: (...args:any[])=>any}>=ReturnType<PropertiesTypes<T>>
 
 let rootReducer = combineReducers({
     profilePage: profileReducer,

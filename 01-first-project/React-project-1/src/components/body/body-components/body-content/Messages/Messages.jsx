@@ -6,8 +6,8 @@ import MessageItem from './MessageItem/MessageItem';
 import { Navigate } from "react-router-dom";
 
 import { Field, reduxForm } from "redux-form";
-import { Textarea } from '../../../../common/FormsControl/FormsControl';
-import { required, maxLengthCreator } from '../../../../../utils/validators/validators';
+import { Textarea } from '../../../../common/FormsControl/FormsControl.tsx';
+import { required, maxLengthCreator } from '../../../../../utils/validators/validators.ts';
 
 class DialogForm extends React.Component {
     render(){

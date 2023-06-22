@@ -1,13 +1,14 @@
 
 import { connect } from "react-redux";
-import { setUsers, setPage, setFollowingProgress, getUsersTC, followTC, unfollowTC } from "../../../../../redux/usersReducer.ts";
+import {  getUsersTC, followTC, unfollowTC } from "../../../../../redux/usersReducer.ts";
+import { actions } from "../../../../../redux/usersReducer.ts";
 import React from "react";
 import Users from './Users.tsx';
 import Preloader from "../../../../common/preloader/preloader.jsx";
 import { takeCurrentPage, takeFollowingProgress, takeIsFetching, takePageSize, takeState, takeTotalUsersCount } from "../../../../../redux/Selectors/usersSelectors.ts";
 
 
-import { AppStateType } from "../../../../../redux/reduxStore.js";
+import { AppStateType } from "../../../../../redux/reduxStore.ts";
 
 
 
@@ -109,6 +110,7 @@ type MapDispatchType = {
     unfollowTC:()=>void
 }
 
+const {setUsers ,setPage , setFollowingProgress} = actions;
 //@ts-ignore
 const UsersContainer = connect(mapStateToProps, {
     setUsers,
