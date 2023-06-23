@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
 import { usersAPI } from "../api/apiOfUsers.ts";
 import { PhotosType } from "../Types/Types";
-import { AppStateType, InferActionsTypes } from "./reduxStore";
+import { AppStateType, BaseThunkType, InferActionsTypes } from "./reduxStore";
 import { ThunkAction } from "redux-thunk";
 
 
@@ -108,7 +108,8 @@ export const actions = {
 type GetStateType = () => AppStateType
 type DispatchType = Dispatch<ActionsTypes>;
 
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>;
+
+type ThunkType = BaseThunkType<ActionsTypes>;
 
 
 ///////////// This first various of typisation of thunk-creator

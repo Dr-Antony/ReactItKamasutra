@@ -14,7 +14,7 @@ class UserItem extends React.Component {
                 <div className={style.container}>
                     <div className={style.userItem__subscribe}>
                         <div className={style.userItem__subscribe_photo}>
-                            <NavLink to={`/Profile/${this.props.id}`}>
+                            <NavLink to={`/Profile/${this.props.id}` }>
                                 <img src={this.props.photo.small != null ? this.props.photo.small : userPhoto} />
                             </NavLink>
                         </div>

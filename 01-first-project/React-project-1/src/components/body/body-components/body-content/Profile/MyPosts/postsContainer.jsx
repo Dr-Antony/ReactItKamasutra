@@ -1,9 +1,9 @@
 
 import Posts from './posts';
-import { addPostActionCreator, chengeTextActionCreator } from '../../../../../../redux/profileReducer.ts';
+import { actions } from '../../../../../../redux/profileReducer.ts';
 import { connect } from 'react-redux';
 
-
+const { addPostActionCreator, chengeTextActionCreator } = actions;
 
 let mapStateToProps = (state) => {
     return {
