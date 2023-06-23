@@ -1,3 +1,5 @@
+import { InferActionsTypes } from "./reduxStore";
+
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_TEXT_OF_MESSAGE = 'CHANGE-MESSAGE';
 
@@ -28,7 +30,7 @@ let initialState = {
 export type InitialStateType = typeof initialState;
 
 
-const dialogsReducer = (state = initialState, action: ActionsTypes):InitialStateType => {
+const dialogsReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case ADD_MESSAGE: {
             return { ...state, messagesData: [...state.messagesData, { message: action.textOfNewMessage }], newText: '' };
@@ -38,27 +40,39 @@ const dialogsReducer = (state = initialState, action: ActionsTypes):InitialState
 };
 
 
-type ActionsTypes = AddMessageType|ChengeTextMessageType;
+type ActionsTypes = InferActionsTypes<typeof actions>
 
-export type AddMessageType = {
-    type: typeof ADD_MESSAGE,
-    textOfNewMessage: String
+
+
+
+export const actions = {
+    addMessageActionCreator: (text: string) => {
+        return { type: ADD_MESSAGE, textOfNewMessage: text } as const
+    },
+    chengeTextMessageActionCreator: (text: string) => {
+        return { type: UPDATE_TEXT_OF_MESSAGE, updateText: text } as const
+    }
 }
-export const addMessageActionCreator = (text: String): AddMessageType => {
-    return { type: ADD_MESSAGE, textOfNewMessage: text }
-};
+
+// export type AddMessageType = {
+//     type: typeof ADD_MESSAGE,
+//     textOfNewMessage: String
+// }
+// export const addMessageActionCreator = (text: String): AddMessageType => {
+//     return { type: ADD_MESSAGE, textOfNewMessage: text }
+// };
 
 
 
 // Оставил чтоб в случае чего вспомнить логику выполнения
 
 
-export type ChengeTextMessageType = {
-    type: typeof UPDATE_TEXT_OF_MESSAGE,
-    updateText: String
-}
-export const chengeTextMessageActionCreator = (text: String):ChengeTextMessageType => {
-    return { type: UPDATE_TEXT_OF_MESSAGE, updateText: text }
-};
+// export type ChengeTextMessageType = {
+//     type: typeof UPDATE_TEXT_OF_MESSAGE,
+//     updateText: String
+// }
+// export const chengeTextMessageActionCreator = (text: String):ChengeTextMessageType => {
+//     return { type: UPDATE_TEXT_OF_MESSAGE, updateText: text }
+// };
 
 export default dialogsReducer;

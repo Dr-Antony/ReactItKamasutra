@@ -1,5 +1,5 @@
 import Messages from './Messages';
-import { addMessageActionCreator,chengeTextMessageActionCreator } from '../../../../../redux/dialogsReducer.ts';
+import { actions } from '../../../../../redux/dialogsReducer.ts';
 import { connect } from 'react-redux';
 
 import { withAuthRedirect } from '../../../../../hoc/withAuthRedirect.tsx';
@@ -17,7 +17,7 @@ let mapStateToProps = (state) => {
     }
 };
 
-
+const { addMessageActionCreator,chengeTextMessageActionCreator } = actions;
 
 
 
