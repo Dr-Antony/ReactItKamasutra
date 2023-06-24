@@ -19,7 +19,7 @@ import Preloader from '../common/preloader/preloader';
 import { Suspense } from 'react';
 
 // const ProfileContainer = React.lazy(() => import('./body-components/body-content/Profile/ProfileContainer'));
-const MessagesContainer = React.lazy(() => import('./body-components/body-content/Messages/messagesContainer'));
+const MessagesContainer = React.lazy(() => import('./body-components/body-content/Messages/messagesContainer.tsx'));
 const Music = React.lazy(() => import('./body-components/body-content/Music/Music'));
 const Settings = React.lazy(() => import('./body-components/body-content/Settings/Settings'));
 const News = React.lazy(() => import('./body-components/body-content/News/News'));
