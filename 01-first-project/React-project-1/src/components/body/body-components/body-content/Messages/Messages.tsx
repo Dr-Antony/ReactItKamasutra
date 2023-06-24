@@ -8,8 +8,31 @@ import { Navigate } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 import { Textarea } from '../../../../common/FormsControl/FormsControl.tsx';
 import { required, maxLengthCreator } from '../../../../../utils/validators/validators.ts';
+import { InitialStateType } from '../../../../../redux/dialogsReducer';
 
-class DialogForm extends React.Component {
+
+
+
+export type NewMessagesFormType = {
+    messageText: string,
+    password: string,
+    rememberMe: boolean,
+    captcha: string
+}
+type NewMessagesFormPropertiesType =Extract<keyof NewMessagesFormType,string>;
+
+
+type OwnPropsType = {
+    dialogsPage: InitialStateType,
+    sendMessage:(messageText:string)=>void
+}
+
+
+
+
+
+
+class DialogForm extends React.Component<NewMessagesFormPropertiesType> {
     render(){
     return (
         <form onSubmit={this.props.handleSubmit} className={style.dialog__window_send}>
@@ -30,7 +53,6 @@ const ReduxDialogsForm = reduxForm({
 })(DialogForm)
 
 
-
 class Messages extends React.Component  {
     constructor(props){
         super(props)
@@ -49,14 +71,10 @@ class Messages extends React.Component  {
     })
     )
 }
-
-
 //Это было по старому (Оставил как наглядный пример логики исполнения процесса)
-
-
 // ......................................................................
     newMessage = React.createRef();
-    onSendMessage = () => {
+    onSendMessage = ():NewMessagesFormType => {
         let text = this.newMessage.current.value;
         this.props.sendMessage(text);
     };
@@ -65,26 +83,10 @@ class Messages extends React.Component  {
         this.props.chengeTextMessageActionCreator(text);
     };
 // ......................................................................
-
-
-
-
-
-
-
-
-
-
     onSubmit = (data)=> {
         this.props.addMessageActionCreator(data.messageText);
         data.messageText= "";
     }
-
-
-
-
-
-
 render(){
     if(!this.props.isAuth){
         return <Navigate to={'/login'}/>
@@ -116,84 +118,3 @@ export default Messages;
 
 
 
-
-
-// const Messages = (props) => {
-//     let dialogsElements = props.state.dialogsData.map((d) => {
-//         return (<DialogItem name={d.name} id={d.id} />)
-//     });
-//     let mesagesElements = props.state.messagesData.map((m) => {
-//         return (<MessageItem message={m.message} />)
-//     });
-//     let newMessage = React.createRef();
-    
-
-//     let onSendMessage = () => {
-//         let text = newMessage.current.value;
-//         props.sendMessage(text);
-//     };
-    
-//     let changeText = () => {
-//         let text = newMessage.current.value;
-//         props.changeTextMessage(text);
-//     };
-//     debugger
-
-//     return (
-//         <div className={style.messages}>
-//             <div className={style.dialogs}>
-//                 {dialogsElements}
-//             </div>
-//             <div className={style.dialog__window}>
-//             <div className={style.dialog__window_msgs}>
-//                 {mesagesElements}
-//             </div>
-//             <div className={style.dialog__window_send}>
-//                 <div><textarea className={style.textArea} onChange={changeText} ref={newMessage} value={props.state.newText}></textarea></div>
-//                 <div><button onClick={onSendMessage} className={style.button}>Send</button></div>
-//             </div>
-//         </div>
-//         </div>
-//     );
-// };
-
-// export default Messages;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // let dialogWindowRendersArray = props.dialogsData.map((r) => {
-    //     let path = '/Messages/' + r.name;
-    //     return (<Route path={path} element={<Dialogs messagesData={r.messagesData} addMessage={props.addMessage} />} />)
-    // });
-
-
-
-    // let routeMesseges = props.dialogsData.map((r)=>{
-    //     let pathItem = r.name;
-    //     let mesages = r.messagesData.map((m) => {
-    //         return (<MessageItem message={m.message} />)
-    //     });
-    //     return(
-    //         <Route path={pathItem} element={mesages} />
-    //     );
-    // });
-
-    // let mesagesElements = props.dialogsData.messagesData.map((m) => {
-    //     return (<MessageItem message={m.message} />)
-    // });

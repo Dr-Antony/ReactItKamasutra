@@ -3,7 +3,7 @@ import Profile from './profile.jsx';
 import { connect } from "react-redux";
 import { actions } from './../../../../../redux/profileReducer.ts';
 import {  getProfileApiTC, getStatusApiTC, updateStatusApiTC,savePhoto,setProfileData } from './../../../../../redux/profileReducer.ts';
-import { withAuthRedirect } from "../../../../../hoc/withAuthRedirect.tsx";
+import { withAuthRedirect } from "../../../../../hoc/withAuthRedirect";
 import {
     Navigate,
     useLocation,
