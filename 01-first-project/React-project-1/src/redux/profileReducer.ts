@@ -100,7 +100,7 @@ type DispatchType = Dispatch<ActionsTypes>;
 
 
 export const getProfileApiTC = (userId: number):ThunkType => {
-    return async (dispatch: DispatchType) => {
+    return async (dispatch) => {
         let data = await profileAPI.getProfile(userId);
         dispatch(actions.setUserProfile(data))
     }
@@ -113,7 +113,7 @@ export const getStatusApiTC = (userId: number):ThunkType => {
 }
 
 export const updateStatusApiTC = (status: string, userId: number):ThunkType => {
-    return async (dispatch: DispatchType) => {
+    return async (dispatch) => {
         let response = await profileAPI.updateStatus(status);
         if (response.data.resultCode === 0) {
             dispatch(actions.updateStatus(status))
@@ -123,7 +123,7 @@ export const updateStatusApiTC = (status: string, userId: number):ThunkType => {
     }
 }
 export const savePhoto = (file: File):ThunkType => {
-    return async (dispatch: DispatchType) => {
+    return async (dispatch) => {
         let response = await profileAPI.savePhoto(file)
         if (response.data.resultCode === 0) {
             debugger

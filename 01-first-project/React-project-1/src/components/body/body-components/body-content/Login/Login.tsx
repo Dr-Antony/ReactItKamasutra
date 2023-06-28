@@ -6,16 +6,17 @@ import { Input, createField } from "../../../../common/FormsControl/FormsControl
 import { required, maxLengthCreator } from "../../../../../utils/validators/validators.ts";
 import { loginTC } from "../../../../../redux/authReducer.ts";
 
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
+import { AppStateType } from "../../../../../redux/reduxStore";
 
 
 type OwnProps = {
-    invalidData:boolean,
-    captchaUrl:string
+    invalidData: boolean,
+    captchaUrl: string
 }
 
-const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType,OwnProps> & OwnProps > = ({ handleSubmit, error, invalidData, captchaUrl }) => {
+const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, OwnProps> & OwnProps> = ({ handleSubmit, error, invalidData, captchaUrl }) => {
     const validInvalid = classNames(style.login__login, { [style.error]: invalidData }) // Это пример как работать с клааснеймами через одноименную библиотеку. Очень удобно.
     debugger
     return (
@@ -41,7 +42,7 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType,OwnProps> & OwnP
     )
 }
 
-const ReduxLoginForm = reduxForm<LoginFormValuesType,OwnProps>({
+const ReduxLoginForm = reduxForm<LoginFormValuesType, OwnProps>({
     form: 'login'
 })(LoginForm)
 
@@ -53,11 +54,18 @@ export type LoginFormValuesType = {
     rememberMe: boolean,
     captcha: string
 }
-type LoginFormPropertiesType =Extract<keyof LoginFormValuesType,string>;
+type LoginFormPropertiesType = Extract<keyof LoginFormValuesType, string>;
 ///////////////////////////////////////
 
 
-const Login: React.FC<MapStatePropsType & MapSDispatchPropsType> = ({ loginTC, isAuth, captchaUrl, invalidData }) => {
+const Login: React.FC = ({loginTC}) => {
+    const captchaUrl = useSelector((state: AppStateType) => state.auth.captchaUrl);
+    const isAuth = useSelector((state: AppStateType) => state.auth.isAuth);
+    const invalidData = useSelector((state: AppStateType) => state.auth.invalidData);
+
+    const dispatch = useDispatch()//не получилось 
+
+
     const onSubmit = (formData: LoginFormValuesType) => {
         let { email, password, rememberMe, captcha } = formData;
         loginTC(email, password, rememberMe, captcha);
@@ -80,24 +88,13 @@ const Login: React.FC<MapStatePropsType & MapSDispatchPropsType> = ({ loginTC, i
 
 
 
-type MapStatePropsType = {
-    captchaUrl: string,
-    isAuth: boolean,
-    invalidData: boolean,
-    handleSubmit?: any,
-}
-type MapSDispatchPropsType = {
-    loginTC: (email: string, password: string, rememberMe: boolean, captcha: string) => void
-}
+// type MapSDispatchPropsType = {
+//     loginTC: (email: string, password: string, rememberMe: boolean, captcha: string) => void
+// }
 
 
 
-let mapStateToProps = (state: any): MapStatePropsType => {
-    return {
-        captchaUrl: state.auth.captchaUrl,
-        isAuth: state.auth.isAuth,
-        invalidData: state.auth.invalidData
-    }
-};
+// let mapStateToProps = (state: any)=> {
+// };
 
-export default connect(mapStateToProps, { loginTC })(Login);
+export default connect(null, { loginTC })(Login);

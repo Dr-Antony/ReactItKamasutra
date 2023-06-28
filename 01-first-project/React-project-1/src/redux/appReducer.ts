@@ -45,11 +45,10 @@ export const actions = {
 
 type ThunkType = ThunkAction<Promise<void>, AppStateType,unknown,ActionsTypes>
 
-type GetStateType = ()=>AppStateType
-type DispatchType = Dispatch<ActionsTypes>;
+
 
 export const initializeApp = () => {
-    return (dispatch:DispatchType | any,getState:GetStateType) => {
+    return (dispatch) => {
         let promis = dispatch(getMyDataTC())
         promis.then(() => { dispatch(actions.setInitialized()) })
     }
